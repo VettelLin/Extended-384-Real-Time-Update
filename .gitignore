@@ -1,0 +1,23 @@
+# Visual Studio 临时文件
+.vs/
+*.VC.db
+*.VC.opendb
+ipch/
+*.ipch
+
+# 构建输出目录
+Debug/
+Release/
+x64/
+x86/
+
+# 常见编译产物
+*.obj
+*.pch
+*.pdb
+*.log
+*.sdf
+*.cache
+*.exe
+*.dll
+*.lib

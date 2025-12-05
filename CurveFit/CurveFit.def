@@ -1,0 +1,6 @@
+; CurveFit.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CurveFit"
+
+EXPORTS
+    ; Explicit exports can go here

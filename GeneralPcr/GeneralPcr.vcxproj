@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{35FF6405-FAEA-439F-895D-149D4B5DDF2F}</ProjectGuid>
+    <RootNamespace>GeneralPcr</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\Language;..\Libxl\include_cpp;..\PCRAlgorithmLib;..\dll\header;..\PCRInstanceLib;..\PCRCtrlLib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Debug;..\dll\debug;..\Libxl\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\Language;..\Libxl\include_cpp;..\PCRAlgorithmLib;..\dll\header;..\PCRInstanceLib;..\PCRCtrlLib;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Libxl\lib;..\Release;..\dll\release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>PCRCtrlLib.lib;PCRInstanceLib.lib;libxl.lib;Language.lib</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>PCRCtrlLib.lib;PCRInstanceLib.lib;libxl.lib;Language.lib;</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="res\GeneralPcr.ico" />
+    <None Include="res\GeneralPcr.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddCycleDlg.h" />
+    <ClInclude Include="AddUserDlg.h" />
+    <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="AnaAmlParamDlg.h" />
+    <ClInclude Include="AnaMeltParamDlg.h" />
+    <ClInclude Include="ArrowInfo.h" />
+    <ClInclude Include="AssaySelectDlg.h" />
+    <ClInclude Include="AxisMaxMinInfo.h" />
+    <ClInclude Include="AxisZoomDlg.h" />
+    <ClInclude Include="BaseSetDlg.h" />
+    <ClInclude Include="CommInterruptTipDlg.h" />
+    <ClInclude Include="CYExpInfoDlg.h" />
+    <ClInclude Include="CYInfo.h" />
+    <ClInclude Include="CYNormSetDlg.h" />
+    <ClInclude Include="CYSamInfoDlg.h" />
+    <ClInclude Include="DataParam.h" />
+    <ClInclude Include="EnumFtUnitType.h" />
+    <ClInclude Include="ExpRunCtrl.h" />
+    <ClInclude Include="FtSetDensity.h" />
+    <ClInclude Include="FuncBtDlg.h" />
+    <ClInclude Include="CalibAutoSetInfo.h" />
+    <ClInclude Include="CaretInfo.h" />
+    <ClInclude Include="CellInfo.h" />
+    <ClInclude Include="ChanMeltAnaParamChangeInfo.h" />
+    <ClInclude Include="ColorSelectDlg.h" />
+    <ClInclude Include="ComDataType.h" />
+    <ClInclude Include="CrossSetDlg.h" />
+    <ClInclude Include="CtrlResource.h" />
+    <ClInclude Include="DataAnaDlg.h" />
+    <ClInclude Include="Define.h" />
+    <ClInclude Include="DotPosInfo.h" />
+    <ClInclude Include="EditModeAbs.h" />
+    <ClInclude Include="EditModeType.h" />
+    <ClInclude Include="EditUserDlg.h" />
+    <ClInclude Include="ExpeInfoDlg.h" />
+    <ClInclude Include="ExperStateInfo.h" />
+    <ClInclude Include="FileManageDlg.h" />
+    <ClInclude Include="FilterParamSetDlg.h" />
+    <ClInclude Include="FloatDlg.h" />
+    <ClInclude Include="FontSet.h" />
+    <ClInclude Include="GeneralOperator.h" />
+    <ClInclude Include="GeneralPcr.h" />
+    <ClInclude Include="GeneralPcrDlg.h" />
+    <ClInclude Include="Gif.h" />
+    <ClInclude Include="GifProgressBar.h" />
+    <ClInclude Include="ChanThreInfo.h" />
+    <ClInclude Include="HoleColorInfo.h" />
+    <ClInclude Include="HoleSelectSet.h" />
+    <ClInclude Include="HtmlCtrl.h" />
+    <ClInclude Include="IconBtInfo.h" />
+    <ClInclude Include="InstrumentInfoDlg.h" />
+    <ClInclude Include="InterfaceA.h" />
+    <ClInclude Include="InterfaceB.h" />
+    <ClInclude Include="InterfaceC.h" />
+    <ClInclude Include="ItemForSelInfo.h" />
+    <ClInclude Include="LegendInfo.h" />
+    <ClInclude Include="LinearFitData.h" />
+    <ClInclude Include="LineInfo.h" />
+    <ClInclude Include="LisSetDlg.h" />
+    <ClInclude Include="LisSetInfo.h" />
+    <ClInclude Include="LoadSamDlg.h" />
+    <ClInclude Include="MainPageDlg.h" />
+    <ClInclude Include="MaxMinInfo.h" />
+    <ClInclude Include="MeltAnaParamChangeInfo.h" />
+    <ClInclude Include="MeltParamChangeInfo.h" />
+    <ClInclude Include="MeltTemInfo.h" />
+    <ClInclude Include="MiddleDlg.h" />
+    <ClInclude Include="MonitorBaseInfoDlg.h" />
+    <ClInclude Include="MyButton.h" />
+    <ClInclude Include="MyCbSelWnd.h" />
+    <ClInclude Include="MyCheckButton.h" />
+    <ClInclude Include="MyDateTimeCtrl.h" />
+    <ClInclude Include="MyDrawCurveDlg.h" />
+    <ClInclude Include="MyGeneTipDlg.h" />
+    <ClInclude Include="MyGeneTipInfo.h" />
+    <ClInclude Include="MyInputCb.h" />
+    <ClInclude Include="MyInsertBt.h" />
+    <ClInclude Include="MyLstCtrl.h" />
+    <ClInclude Include="MyNewCb.h" />
+    <ClInclude Include="MyNewEdit.h" />
+    <ClInclude Include="MyPageSwitchBt.h" />
+    <ClInclude Include="MyPoint.h" />
+    <ClInclude Include="MyProgressBar.h" />
+    <ClInclude Include="MySamPlateDlg.h" />
+    <ClInclude Include="MyScrollInfo.h" />
+    <ClInclude Include="MySegDlg.h" />
+    <ClInclude Include="MySegDlgParam.h" />
+    <ClInclude Include="MySegEditDlg.h" />
+    <ClInclude Include="MySegEditInfo.h" />
+    <ClInclude Include="MySelWnd.h" />
+    <ClInclude Include="MySelWndPosInfo.h" />
+    <ClInclude Include="MyStatic.h" />
+    <ClInclude Include="MyStepEditDlg.h" />
+    <ClInclude Include="MyStepEditInfo.h" />
+    <ClInclude Include="MyUrlBt.h" />
+    <ClInclude Include="PlateInfo.h" />
+    <ClInclude Include="PopTipInfo.h" />
+    <ClInclude Include="PowerOffProtect.h" />
+    <ClInclude Include="PrjBaseInfoDlg.h" />
+    <ClInclude Include="PrjManageBaseInfoDlg.h" />
+    <ClInclude Include="PrjManageDlg.h" />
+    <ClInclude Include="ProcSetDlg.h" />
+    <ClInclude Include="MyPublicFunc.h" />
+    <ClInclude Include="Ps96AddTemplateDlg.h" />
+    <ClInclude Include="Ps96CutOffDlg.h" />
+    <ClInclude Include="Ps96IvdDlg.h" />
+    <ClInclude Include="Ps96IvdFileManagerDlg.h" />
+    <ClInclude Include="Ps96IvdSet.h" />
+    <ClInclude Include="Ps96SetDlg.h" />
+    <ClInclude Include="Ps96SimpleDlg.h" />
+    <ClInclude Include="Ps96SimpleSetDlg.h" />
+    <ClInclude Include="Ps96WorkDlg.h" />
+    <ClInclude Include="RectManage.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="RowColEditInfo.h" />
+    <ClInclude Include="RowInfo.h" />
+    <ClInclude Include="RunMonitorDlg.h" />
+    <ClInclude Include="RunProgressRecord.h" />
+    <ClInclude Include="RunStateDlg.h" />
+    <ClInclude Include="SamBaseInfoEditDlg.h" />
+    <ClInclude Include="SamInfoDlg.h" />
+    <ClInclude Include="SamInfoExportMode.h" />
+    <ClInclude Include="SamLst.h" />
+    <ClInclude Include="SamNameAutoSetInfo.h" />
+    <ClInclude Include="SamSetDlg.h" />
+    <ClInclude Include="SegDotPosInfo.h" />
+    <ClInclude Include="SegStepRange.h" />
+    <ClInclude Include="SelfCheckDlg.h" />
+    <ClInclude Include="SelfDefMsg.h" />
+    <ClInclude Include="SelfDefType.h" />
+    <ClInclude Include="SetDlg.h" />
+    <ClInclude Include="SetInfo.h" />
+    <ClInclude Include="SingleLgdInfo.h" />
+    <ClInclude Include="SonWnd.h" />
+    <ClInclude Include="StartPageDlg.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StdProc.h" />
+    <ClInclude Include="SystemSetDlg.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TemplateFileInfo.h" />
+    <ClInclude Include="TemplatePopDlg.h" />
+    <ClInclude Include="TemplateSonDlg.h" />
+    <ClInclude Include="ThreLineInfo.h" />
+    <ClInclude Include="TitleInfo.h" />
+    <ClInclude Include="TubeChanEditInfo.h" />
+    <ClInclude Include="TubeFullFluInfo.h" />
+    <ClInclude Include="TurbidityParaDlg.h" />
+    <ClInclude Include="UserLoginDlg.h" />
+    <ClInclude Include="UserManageSetDlg.h" />
+    <ClInclude Include="WebBrowserPrint.h" />
+    <ClInclude Include="WorkDlg.h" />
+    <ClInclude Include="XMLParser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AddCycleDlg.cpp" />
+    <ClCompile Include="AddUserDlg.cpp" />
+    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="AnaAmlParamDlg.cpp" />
+    <ClCompile Include="AnaMeltParamDlg.cpp" />
+    <ClCompile Include="ArrowInfo.cpp" />
+    <ClCompile Include="AssaySelectDlg.cpp" />
+    <ClCompile Include="AxisMaxMinInfo.cpp" />
+    <ClCompile Include="AxisZoomDlg.cpp" />
+    <ClCompile Include="BaseSetDlg.cpp" />
+    <ClCompile Include="CommInterruptTipDlg.cpp" />
+    <ClCompile Include="CYExpInfoDlg.cpp" />
+    <ClCompile Include="CYInfo.cpp" />
+    <ClCompile Include="CYNormSetDlg.cpp" />
+    <ClCompile Include="CYSamInfoDlg.cpp" />
+    <ClCompile Include="DataParam.cpp" />
+    <ClCompile Include="ExpRunCtrl.cpp" />
+    <ClCompile Include="FtSetDensity.cpp" />
+    <ClCompile Include="FuncBtDlg.cpp" />
+    <ClCompile Include="CalibAutoSetInfo.cpp" />
+    <ClCompile Include="CaretInfo.cpp" />
+    <ClCompile Include="CellInfo.cpp" />
+    <ClCompile Include="ChanMeltAnaParamChangeInfo.cpp" />
+    <ClCompile Include="ColorSelectDlg.cpp" />
+    <ClCompile Include="CrossSetDlg.cpp" />
+    <ClCompile Include="DataAnaDlg.cpp" />
+    <ClCompile Include="DotPosInfo.cpp" />
+    <ClCompile Include="EditModeAbs.cpp" />
+    <ClCompile Include="EditUserDlg.cpp" />
+    <ClCompile Include="ExpeInfoDlg.cpp" />
+    <ClCompile Include="ExperStateInfo.cpp" />
+    <ClCompile Include="FileManageDlg.cpp" />
+    <ClCompile Include="FilterParamSetDlg.cpp" />
+    <ClCompile Include="FloatDlg.cpp" />
+    <ClCompile Include="FontSet.cpp" />
+    <ClCompile Include="GeneralPcr.cpp" />
+    <ClCompile Include="GeneralPcrDlg.cpp" />
+    <ClCompile Include="Gif.cpp" />
+    <ClCompile Include="GifProgressBar.cpp" />
+    <ClCompile Include="ChanThreInfo.cpp" />
+    <ClCompile Include="HoleColorInfo.cpp" />
+    <ClCompile Include="HoleSelectSet.cpp" />
+    <ClCompile Include="HtmlCtrl.cpp" />
+    <ClCompile Include="IconBtInfo.cpp" />
+    <ClCompile Include="InstrumentInfoDlg.cpp" />
+    <ClCompile Include="InterfaceA.cpp" />
+    <ClCompile Include="InterfaceB.cpp" />
+    <ClCompile Include="InterfaceC.cpp" />
+    <ClCompile Include="ItemForSelInfo.cpp" />
+    <ClCompile Include="LegendInfo.cpp" />
+    <ClCompile Include="LinearFitData.cpp" />
+    <ClCompile Include="LineInfo.cpp" />
+    <ClCompile Include="LisSetDlg.cpp" />
+    <ClCompile Include="LisSetInfo.cpp" />
+    <ClCompile Include="LoadSamDlg.cpp" />
+    <ClCompile Include="MainPageDlg.cpp" />
+    <ClCompile Include="MaxMinInfo.cpp" />
+    <ClCompile Include="MeltAnaParamChangeInfo.cpp" />
+    <ClCompile Include="MeltParamChangeInfo.cpp" />
+    <ClCompile Include="MeltTemInfo.cpp" />
+    <ClCompile Include="MiddleDlg.cpp" />
+    <ClCompile Include="MonitorBaseInfoDlg.cpp" />
+    <ClCompile Include="MyButton.cpp" />
+    <ClCompile Include="MyCbSelWnd.cpp" />
+    <ClCompile Include="MyCheckButton.cpp" />
+    <ClCompile Include="MyDateTimeCtrl.cpp" />
+    <ClCompile Include="MyDrawCurveDlg.cpp" />
+    <ClCompile Include="MyGeneTipDlg.cpp" />
+    <ClCompile Include="MyGeneTipInfo.cpp" />
+    <ClCompile Include="MyInputCb.cpp" />
+    <ClCompile Include="MyInsertBt.cpp" />
+    <ClCompile Include="MyLstCtrl.cpp" />
+    <ClCompile Include="MyNewCb.cpp" />
+    <ClCompile Include="MyNewEdit.cpp" />
+    <ClCompile Include="MyPageSwitchBt.cpp" />
+    <ClCompile Include="MyPoint.cpp" />
+    <ClCompile Include="MyProgressBar.cpp" />
+    <ClCompile Include="MySamPlateDlg.cpp" />
+    <ClCompile Include="MyScrollInfo.cpp" />
+    <ClCompile Include="MySegDlg.cpp" />
+    <ClCompile Include="MySegDlgParam.cpp" />
+    <ClCompile Include="MySegEditDlg.cpp" />
+    <ClCompile Include="MySegEditInfo.cpp" />
+    <ClCompile Include="MySelWnd.cpp" />
+    <ClCompile Include="MySelWndPosInfo.cpp" />
+    <ClCompile Include="MyStatic.cpp" />
+    <ClCompile Include="MyStepEditDlg.cpp" />
+    <ClCompile Include="MyStepEditInfo.cpp" />
+    <ClCompile Include="MyUrlBt.cpp" />
+    <ClCompile Include="PlateInfo.cpp" />
+    <ClCompile Include="PopTipInfo.cpp" />
+    <ClCompile Include="PowerOffProtect.cpp" />
+    <ClCompile Include="PrjBaseInfoDlg.cpp" />
+    <ClCompile Include="PrjManageBaseInfoDlg.cpp" />
+    <ClCompile Include="PrjManageDlg.cpp" />
+    <ClCompile Include="ProcSetDlg.cpp" />
+    <ClCompile Include="MyPublicFunc.cpp" />
+    <ClCompile Include="Ps96AddTemplateDlg.cpp" />
+    <ClCompile Include="Ps96CutOffDlg.cpp" />
+    <ClCompile Include="Ps96IvdDlg.cpp" />
+    <ClCompile Include="Ps96IvdFileManagerDlg.cpp" />
+    <ClCompile Include="Ps96IvdSet.cpp" />
+    <ClCompile Include="Ps96SetDlg.cpp" />
+    <ClCompile Include="Ps96SimpleDlg.cpp" />
+    <ClCompile Include="Ps96SimpleSetDlg.cpp" />
+    <ClCompile Include="Ps96WorkDlg.cpp" />
+    <ClCompile Include="RectManage.cpp" />
+    <ClCompile Include="RowColEditInfo.cpp" />
+    <ClCompile Include="RowInfo.cpp" />
+    <ClCompile Include="RunMonitorDlg.cpp" />
+    <ClCompile Include="RunProgressRecord.cpp" />
+    <ClCompile Include="RunStateDlg.cpp" />
+    <ClCompile Include="SamBaseInfoEditDlg.cpp" />
+    <ClCompile Include="SamInfoDlg.cpp" />
+    <ClCompile Include="SamLst.cpp" />
+    <ClCompile Include="SamNameAutoSetInfo.cpp" />
+    <ClCompile Include="SamSetDlg.cpp" />
+    <ClCompile Include="SegDotPosInfo.cpp" />
+    <ClCompile Include="SegStepRange.cpp" />
+    <ClCompile Include="SelfCheckDlg.cpp" />
+    <ClCompile Include="SetDlg.cpp" />
+    <ClCompile Include="SetInfo.cpp" />
+    <ClCompile Include="SingleLgdInfo.cpp" />
+    <ClCompile Include="SonWnd.cpp" />
+    <ClCompile Include="StartPageDlg.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StdProc.cpp" />
+    <ClCompile Include="SystemSetDlg.cpp" />
+    <ClCompile Include="TemplateFileInfo.cpp" />
+    <ClCompile Include="TemplatePopDlg.cpp" />
+    <ClCompile Include="TemplateSonDlg.cpp" />
+    <ClCompile Include="ThreLineInfo.cpp" />
+    <ClCompile Include="TitleInfo.cpp" />
+    <ClCompile Include="TubeChanEditInfo.cpp" />
+    <ClCompile Include="TubeFullFluInfo.cpp" />
+    <ClCompile Include="TurbidityParaDlg.cpp" />
+    <ClCompile Include="UserLoginDlg.cpp" />
+    <ClCompile Include="UserManageSetDlg.cpp" />
+    <ClCompile Include="WebBrowserPrint.cpp" />
+    <ClCompile Include="WorkDlg.cpp" />
+    <ClCompile Include="XMLParser.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GeneralPcr.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="GeneralPcr.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
