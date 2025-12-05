@@ -73,7 +73,7 @@ BOOL CInstancePCR::Initialize()
 	if (!bReturn)
 		return bReturn;
 
-	// 读取设备参数
+	// 锟斤拷取锟借备锟斤拷锟斤拷
 	bReturn = ReadDeviceParamsFromEPROM();
 
 	if (bReturn)
@@ -211,27 +211,27 @@ void CInstancePCR::InitDevicePara()
 
 void CInstancePCR::InitDeviceStatus()
 {
-	m_sDeviceStatus.cXMot = 0; // X轴状态，0-正常；1-错误；
-	m_sDeviceStatus.cYMot = 0; // Y轴状态，0-正常；1-错误；
-	m_sDeviceStatus.cZMot = 0;		// Z轴状态，0-正常；1-错误；
-	m_sDeviceStatus.cUMot = 0;		// U轴状态，0-正常；1-错误；
-	m_sDeviceStatus.cMotSense = 0;	// 光电开关，0-正常；1-错误；
-	m_sDeviceStatus.cEeprom = 0;	// EEPROM状态，0-正常；1-错误；
-	m_sDeviceStatus.cPMT = 0;		// PMT状态，0-正常；1-错误；
+	m_sDeviceStatus.cXMot = 0; // X锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cYMot = 0; // Y锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cZMot = 0;		// Z锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cUMot = 0;		// U锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cMotSense = 0;	// 锟斤拷缈拷兀锟?-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cEeprom = 0;	// EEPROM状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cPMT = 0;		// PMT状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
 
-	m_sDeviceStatus.cPETUnit1 = 0;	// 帕尔贴1状态，0-正常；1-错误；
-	m_sDeviceStatus.cPETUnit2 = 0;	// 帕尔贴2状态，0-正常；1-错误；
-	m_sDeviceStatus.cPETUnit3 = 0;	// 帕尔贴3状态，0-正常；1-错误；
-	m_sDeviceStatus.cCap = 0;		// 热盖状态，0-正常；1-错误；
-	m_sDeviceStatus.cFanState = 0;	// 散热器风扇状态，0-正常；1-错误；
-	m_sDeviceStatus.cAuxerState = 0; // 辅助加热状态，0-正常；1-错误	
-	m_sDeviceStatus.cA4940Rst = 0;	// 功率板状态，0-正常；1-错误；
-	m_sDeviceStatus.cSysBox = 0;	// 进出仓按钮状态，0-正常；1-有按下
+	m_sDeviceStatus.cPETUnit1 = 0;	// 锟斤拷锟斤拷锟斤拷1状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cPETUnit2 = 0;	// 锟斤拷锟斤拷锟斤拷2状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cPETUnit3 = 0;	// 锟斤拷锟斤拷锟斤拷3状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cCap = 0;		// 锟饺革拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cFanState = 0;	// 散锟斤拷锟斤拷锟斤拷锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cAuxerState = 0; // 锟斤拷锟斤拷锟斤拷锟斤拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷	
+	m_sDeviceStatus.cA4940Rst = 0;	// 锟斤拷锟绞帮拷状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟斤拷锟斤拷
+	m_sDeviceStatus.cSysBox = 0;	// 锟斤拷锟斤拷锟街帮拷钮状态锟斤拷0-锟斤拷锟斤拷锟斤拷1-锟叫帮拷锟斤拷
 
-	m_sDeviceStatus.cLid = 0; // 盖子状态 0：关闭 1：打开
+	m_sDeviceStatus.cLid = 0; // 锟斤拷锟斤拷状态 0锟斤拷锟截憋拷 1锟斤拷锟斤拷
 }
 
-// 初始化仪器结构参数
+// 锟斤拷始锟斤拷锟斤拷锟斤拷锟结构锟斤拷锟斤拷
 void CInstancePCR::InitStructurePara()
 {
 	m_sStructurePara.cFrameLength = 1;
@@ -363,7 +363,7 @@ void CInstancePCR::InitOneChannelFilter(int iChannel, int iByte)
 		int iLine2 = -1;
 		for (int i = 0; i < 32; i++)
 		{
-			if (pChannelFlag[i] == ',' || '，' == pChannelFlag[i])
+			if (pChannelFlag[i] == ',')
 			{
 				if (iComma1 == -1)
 				{
@@ -484,14 +484,14 @@ void CInstancePCR::DeleteFilterPara()
 }
 
 
-// 生成发送命令，处理指令长度5/6/7的情况，没有参数或只有一个参数
+// 锟斤拷锟缴凤拷锟斤拷锟斤拷锟筋，锟斤拷锟斤拷指锟筋长锟斤拷5/6/7锟斤拷锟斤拷锟斤拷锟矫伙拷胁锟斤拷锟斤拷锟街伙拷锟揭伙拷锟斤拷锟斤拷锟?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
 	memset(pCmd, 0, iCmdLength);
 	pCmd[0] = PCR_DNSEND;//帧头
-	pCmd[1] = cCommand; //命令字
-	pCmd[3] = iCmdLength; //长度
+	pCmd[1] = cCommand; //锟斤拷锟斤拷锟斤拷
+	pCmd[3] = iCmdLength; //锟斤拷锟斤拷
 	if (iCmdLength == CMD_SEND_LEN7)
 	{
 		pCmd[4] = (BYTE)((wPara & 0xFF00) >> 8);
@@ -505,55 +505,55 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara)
 	return pCmd;
 }
 
-// 生成发送命令，处理指令长度5/6/7的情况，有两个单字节参数
+// 锟斤拷锟缴凤拷锟斤拷锟斤拷锟筋，锟斤拷锟斤拷指锟筋长锟斤拷5/6/7锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷纸诓锟斤拷锟?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, BYTE cPara1, BYTE cPara2)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
 	memset(pCmd, 0, iCmdLength);
 	pCmd[0] = PCR_DNSEND;//帧头
-	pCmd[1] = cCommand; //命令字
-	pCmd[3] = iCmdLength; //长度
+	pCmd[1] = cCommand; //锟斤拷锟斤拷锟斤拷
+	pCmd[3] = iCmdLength; //锟斤拷锟斤拷
 	pCmd[4] = cPara1;
 	pCmd[5] = cPara2;
 	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);
 	return pCmd;
 }
 
-// 生成发送命令，处理指令长度9的情况，当前使用在取EEPROM参数时，包括地址和取数据长度（字节数）
+// 锟斤拷锟缴凤拷锟斤拷锟斤拷锟筋，锟斤拷锟斤拷指锟筋长锟斤拷9锟斤拷锟斤拷锟斤拷锟斤拷锟角笆癸拷锟斤拷锟饺EPROM锟斤拷锟斤拷时锟斤拷锟斤拷锟斤拷锟斤拷址锟斤拷取锟斤拷锟捷筹拷锟饺ｏ拷锟街斤拷锟斤拷锟斤拷
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, UINT nAddress, BYTE cGReceiveLen)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
 	memset(pCmd, 0, iCmdLength);
 	pCmd[0] = PCR_DNSEND;//帧头
-	pCmd[1] = cCommand; //命令字
-	pCmd[3] = iCmdLength; //长度
+	pCmd[1] = cCommand; //锟斤拷锟斤拷锟斤拷
+	pCmd[3] = iCmdLength; //锟斤拷锟斤拷
 	pCmd[4] = (BYTE)((nAddress & 0xFF0000) >> 16);
 	pCmd[5] = (BYTE)((nAddress & 0xFF00) >> 8);
 	pCmd[6] = (BYTE)(nAddress & 0xFF);
 	pCmd[7] = cGReceiveLen;
-	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//校验和
+	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//校锟斤拷锟?
 	return pCmd;
 }
-// 用于生成 10 字节电机命令：辅助字节 + 脉冲 + 速度 + 校验和
+// 锟斤拷锟斤拷锟斤拷锟斤拷 10 锟街节碉拷锟斤拷锟斤拷睿猴拷锟斤拷锟斤拷纸锟?+ 锟斤拷锟斤拷 + 锟劫讹拷 + 校锟斤拷锟?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, BYTE cFlag, WORD wPulse, WORD wSpeed)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
 	memset(pCmd, 0, iCmdLength);
 
 	pCmd[0] = PCR_DNSEND;     // 帧头 0x5E
-	pCmd[1] = cCommand;       // 命令字 0x07
-	pCmd[2] = 0x00;           // 保留位
-	pCmd[3] = iCmdLength;     // 数据长度
+	pCmd[1] = cCommand;       // 锟斤拷锟斤拷锟斤拷 0x07
+	pCmd[2] = 0x00;           // 锟斤拷锟斤拷位
+	pCmd[3] = iCmdLength;     // 锟斤拷锟捷筹拷锟斤拷
 
-	pCmd[4] = cFlag;          // 功能/标志位（如 0x15, 0x24, 0x28 等）
+	pCmd[4] = cFlag;          // 锟斤拷锟斤拷/锟斤拷志位锟斤拷锟斤拷 0x15, 0x24, 0x28 锟饺ｏ拷
 
-	pCmd[5] = (BYTE)((wPulse >> 8) & 0xFF); // 脉冲 高字节
-	pCmd[6] = (BYTE)(wPulse & 0xFF);        // 脉冲 低字节
+	pCmd[5] = (BYTE)((wPulse >> 8) & 0xFF); // 锟斤拷锟斤拷 锟斤拷锟街斤拷
+	pCmd[6] = (BYTE)(wPulse & 0xFF);        // 锟斤拷锟斤拷 锟斤拷锟街斤拷
 
-	pCmd[7] = (BYTE)((wSpeed >> 8) & 0xFF); // 速度 高字节
-	pCmd[8] = (BYTE)(wSpeed & 0xFF);        // 速度 低字节
+	pCmd[7] = (BYTE)((wSpeed >> 8) & 0xFF); // 锟劫讹拷 锟斤拷锟街斤拷
+	pCmd[8] = (BYTE)(wSpeed & 0xFF);        // 锟劫讹拷 锟斤拷锟街斤拷
 
-	// 校验和放到最后一字节：取前 iCmdLength - 1 个字节的和
+	// 校锟斤拷头诺锟斤拷锟斤拷一锟街节ｏ拷取前 iCmdLength - 1 锟斤拷锟街节的猴拷
 	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);
 
 	return pCmd;
@@ -566,8 +566,8 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara1, W
 	BYTE* pCmd = new BYTE[iCmdLength];
 	memset(pCmd, 0, iCmdLength);
 	pCmd[0] = PCR_DNSEND;//帧头
-	pCmd[1] = cCommand; //命令字
-	pCmd[3] = iCmdLength; //长度
+	pCmd[1] = cCommand; //锟斤拷锟斤拷锟斤拷
+	pCmd[3] = iCmdLength; //锟斤拷锟斤拷
 	pCmd[4] = (BYTE)((wPara1 & 0xFF00) >> 8);
 	pCmd[5] = (BYTE)(wPara1 & 0xFF);
 	pCmd[6] = (BYTE)((wPara2 & 0xFF00) >> 8);
@@ -577,11 +577,11 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara1, W
 	pCmd[10] = (BYTE)((wPara4 & 0xFF00) >> 8);
 	pCmd[11] = (BYTE)(wPara4 & 0xFF);
 	pCmd[12] = cMode;
-	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//校验和
+	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//校锟斤拷锟?
 	return pCmd;
 }
 
-// 发送Hello命令
+// 锟斤拷锟斤拷Hello锟斤拷锟斤拷
 BOOL CInstancePCR::Hello()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_HELLO, 0);
@@ -615,7 +615,7 @@ BOOL CInstancePCR::Hello()
 	return bReturn;
 }
 
-//仪器复位
+//锟斤拷锟斤拷锟斤拷位
 BOOL CInstancePCR::Home()
 {
 	BOOL bReturn = MotorReset(PCR_XMOT_RESET);
@@ -628,11 +628,11 @@ BOOL CInstancePCR::Home()
 	return bReturn;
 }
 
-// 是否进仓
+// 锟角凤拷锟斤拷锟?
 BOOL CInstancePCR::IsInBox(eSysBoxStatus& outStatus)
 {
 	outStatus = BOXSTATE_UNKNOW;
-	// 先读取硬件设备状态
+	// 锟饺讹拷取硬锟斤拷锟借备状态
 	BOOL bReturn = ReadHardwareStatus();
 	if (bReturn)
 	{
@@ -642,7 +642,7 @@ BOOL CInstancePCR::IsInBox(eSysBoxStatus& outStatus)
 	return bReturn;
 }
 
-// 发送进仓命令
+// 锟斤拷锟酵斤拷锟斤拷锟斤拷锟斤拷
 BOOL CInstancePCR::InBox()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_IN_BOX, 0);
@@ -676,7 +676,7 @@ BOOL CInstancePCR::InBox()
 	return bReturn;
 }
 
-// 发送出仓命令
+// 锟斤拷锟酵筹拷锟斤拷锟斤拷锟斤拷
 BOOL CInstancePCR::OutBox()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_OUT_BOX, 0);
@@ -873,7 +873,7 @@ BOOL CInstancePCR::MotorMove(BYTE cMotorFlag, WORD wPulse, WORD wSpeed)
 	return bReturn;
 }
 
-// 默认X电机，扫描一行
+// 默锟斤拷X锟斤拷锟斤拷锟缴拷锟揭伙拷锟?
 BOOL CInstancePCR::MotorScanRow(WORD wPulse, BYTE cDirection)
 {
 	int iCmdLength = CMD_SEND_LEN11;
@@ -882,15 +882,15 @@ BOOL CInstancePCR::MotorScanRow(WORD wPulse, BYTE cDirection)
 	BYTE* pCommand = new BYTE[iCmdLength];
 	memset(pCommand, 0, iCmdLength);
 	pCommand[0] = PCR_DNSEND;//帧头
-	pCommand[1] = PCR_MOTOR; //命令字
-	pCommand[3] = iCmdLength; //长度
+	pCommand[1] = PCR_MOTOR; //锟斤拷锟斤拷锟斤拷
+	pCommand[3] = iCmdLength; //锟斤拷锟斤拷
 	pCommand[4] = PCR_XMOT_SCAN;
 	pCommand[5] = (BYTE)((wPulse & 0xFF00) >> 8);
 	pCommand[6] = (BYTE)(wPulse & 0xFF);
 	pCommand[7] = cDirection;
 	pCommand[8] = (BYTE)((wSpeed & 0xFF00) >> 8);
 	pCommand[9] = (BYTE)(wSpeed & 0xFF);
-	pCommand[iCmdLength - 1] = m_pComPort->GetByteSum(pCommand, iCmdLength - 1);//校验和
+	pCommand[iCmdLength - 1] = m_pComPort->GetByteSum(pCommand, iCmdLength - 1);//校锟斤拷锟?
 
 	int   iReceiveFrameLen = 0;
 	BYTE* pStatus = NULL;
@@ -981,110 +981,110 @@ BOOL CInstancePCR::SendYMotorAbsoluteMove4Byte(DWORD dwPulse, WORD wSpeed)
 
 
 
-//自检电机
+//锟皆硷拷锟斤拷
 BOOL CInstancePCR::ScanOnce()
 {
 	BOOL bReturn = FALSE;
-	BYTE cDirection = 1;  // 初始方向为正向
-	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y轴移动的单位距离
-	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X轴扫描距离
+	BYTE cDirection = 1;  // 锟斤拷始锟斤拷锟斤拷为锟斤拷锟斤拷
+	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y锟斤拷锟狡讹拷锟侥碉拷位锟斤拷锟斤拷
+	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X锟斤拷扫锟斤拷锟斤拷锟?
 
 
 
-	// 执行X轴正向扫描
+	// 执锟斤拷X锟斤拷锟斤拷锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("第一次X轴正向扫描失败"));
+		OutputDebugString(_T("锟斤拷一锟斤拷X锟斤拷锟斤拷锟斤拷扫锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 第二次，Y轴移动4格
+	// 锟节讹拷锟轿ｏ拷Y锟斤拷锟狡讹拷4锟斤拷
 	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_Y, iLineDistance * 6, CInstancePCR::MOTOR_MOVE_TO);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y轴第二次移动4格失败"));
+		OutputDebugString(_T("Y锟斤拷诙锟斤拷锟斤拷贫锟?锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 更改X轴方向为反向，并进行反向扫描
-	cDirection = 0;  // 设置为反向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执行反向运动
+	// 锟斤拷锟斤拷X锟结方锟斤拷为锟斤拷锟津，诧拷锟斤拷锟叫凤拷锟斤拷扫锟斤拷
+	cDirection = 0;  // 锟斤拷锟斤拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执锟叫凤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴反向运动失败"));
+		OutputDebugString(_T("X锟结反锟斤拷锟剿讹拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 执行X轴反向扫描
+	// 执锟斤拷X锟结反锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴反向扫描失败"));
+		OutputDebugString(_T("X锟结反锟斤拷扫锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 第三次，Y轴再移动4格
+	// 锟斤拷锟斤拷锟轿ｏ拷Y锟斤拷锟斤拷锟狡讹拷4锟斤拷
 	DWORD dwPulse = static_cast<DWORD>(iLineDistance * 12);
-	WORD wSpeed = m_sDevicePara.wYMotorScanFreq; // 或使用你设定的速度值
+	WORD wSpeed = m_sDevicePara.wYMotorScanFreq; // 锟斤拷使锟斤拷锟斤拷锟借定锟斤拷锟劫讹拷值
 
 	bReturn = SendYMotorAbsoluteMove4Byte(dwPulse, wSpeed);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y轴第三次移动4格失败"));
+		OutputDebugString(_T("Y锟斤拷锟斤拷锟斤拷锟斤拷贫锟?锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
 
-	// 更改X轴方向为正向，并进行正向扫描
-	cDirection = 1;  // 恢复为正向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_FORWARD);  // 执行正向运动
+	// 锟斤拷锟斤拷X锟结方锟斤拷为锟斤拷锟津，诧拷锟斤拷锟斤拷锟斤拷锟斤拷扫锟斤拷
+	cDirection = 1;  // 锟街革拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_FORWARD);  // 执锟斤拷锟斤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴正向运动失败"));
+		OutputDebugString(_T("X锟斤拷锟斤拷锟斤拷锟剿讹拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 执行X轴正向扫描
+	// 执锟斤拷X锟斤拷锟斤拷锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴最后一次正向扫描失败"));
+		OutputDebugString(_T("X-axis forward scan failed"));
 #endif
 		return FALSE;
 	}
 
 
-	// 更改X轴方向为反向，并进行反向扫描
-	cDirection = 0;  // 设置为反向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执行反向运动
+	// 锟斤拷锟斤拷X锟结方锟斤拷为锟斤拷锟津，诧拷锟斤拷锟叫凤拷锟斤拷扫锟斤拷
+	cDirection = 0;  // 锟斤拷锟斤拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执锟叫凤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴反向运动失败"));
+		OutputDebugString(_T("X锟结反锟斤拷锟剿讹拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 执行X轴反向扫描
+	// 执锟斤拷X锟结反锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴反向扫描失败"));
+		OutputDebugString(_T("X锟结反锟斤拷扫锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
@@ -1097,7 +1097,7 @@ BOOL CInstancePCR::ScanOnce()
 
 
 
-// 实验电机
+// 实锟斤拷锟斤拷
 BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 {
 #ifdef _DEBUG
@@ -1105,65 +1105,65 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 #endif
 
 	BOOL bReturn = FALSE;
-	BYTE cDirection = 1;  // 初始方向为正向
-	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y轴移动的单位距离
-	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X轴扫描距离
+	BYTE cDirection = 1;  // 锟斤拷始锟斤拷锟斤拷为锟斤拷锟斤拷
+	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y锟斤拷锟狡讹拷锟侥碉拷位锟斤拷锟斤拷
+	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X锟斤拷扫锟斤拷锟斤拷锟?
 
-	// 第一次X轴移动并进行正向扫描
+	// 锟斤拷一锟斤拷X锟斤拷锟狡讹拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 		return FALSE;
 
-	// 判断用户是否点击了停止扫描
+	// 锟叫讹拷锟矫伙拷锟角凤拷锟斤拷锟斤拷停止扫锟斤拷
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// 直接终止扫描，复位电机
+		// 直锟斤拷锟斤拷止扫锟借，锟斤拷位锟斤拷锟?
 		goto RETURN_HOME;
 	}
 
-	// 第二次，Y轴移动7格
+	// 锟节讹拷锟轿ｏ拷Y锟斤拷锟狡讹拷7锟斤拷
 	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_Y, iLineDistance * 5.9777, CInstancePCR::MOTOR_MOVE_TO);
 	if (!bReturn)
 		return FALSE;
 
-	// 确保X轴反向扫描
-	cDirection = 0;  // 设置为反向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执行反向运动
+	// 确锟斤拷X锟结反锟斤拷扫锟斤拷
+	cDirection = 0;  // 锟斤拷锟斤拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执锟叫凤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 		return FALSE;
 
-	// 执行反向X轴扫描
+	// 执锟叫凤拷锟斤拷X锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 		return FALSE;
 
-	// 判断用户是否点击了停止扫描
+	// 锟叫讹拷锟矫伙拷锟角凤拷锟斤拷锟斤拷停止扫锟斤拷
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// 直接终止扫描，复位电机
+		// 直锟斤拷锟斤拷止扫锟借，锟斤拷位锟斤拷锟?
 		goto RETURN_HOME;
 	}
 
-	// 第三次，Y轴移动13格
+	// 锟斤拷锟斤拷锟轿ｏ拷Y锟斤拷锟狡讹拷13锟斤拷
 	DWORD dwPulse = static_cast<DWORD>(iLineDistance * 11.9554);
-	WORD wSpeed = m_sDevicePara.wYMotorScanFreq; // 获取Y轴当前速度参数
+	WORD wSpeed = m_sDevicePara.wYMotorScanFreq; // 锟斤拷取Y锟结当前锟劫度诧拷锟斤拷
 
 	bReturn = SendYMotorAbsoluteMove4Byte(dwPulse, wSpeed);
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y轴第三次移动8格失败"));
+		OutputDebugString(_T("Y锟斤拷锟斤拷锟斤拷锟斤拷贫锟?锟斤拷失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
-	// 进行最后一次X轴正向扫描
-	cDirection = 1;  // 恢复为正向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_FORWARD);  // 执行正向运动
+	// 锟斤拷锟斤拷锟斤拷锟揭伙拷锟絏锟斤拷锟斤拷锟斤拷扫锟斤拷
+	cDirection = 1;  // 锟街革拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_FORWARD);  // 执锟斤拷锟斤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 		return FALSE;
 
-	// 执行最后一次X轴扫描
+	// 执锟斤拷锟斤拷锟揭伙拷锟絏锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 		return FALSE;
@@ -1172,24 +1172,24 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 
 
 
-	// 第四次，X轴多扫一次回归
+	// 锟斤拷锟侥次ｏ拷X锟斤拷锟缴ㄒ伙拷位毓锟?
 
-	// 确保X轴反向扫描
-	cDirection = 0;  // 设置为反向
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执行反向运动
+	// 确锟斤拷X锟结反锟斤拷扫锟斤拷
+	cDirection = 0;  // 锟斤拷锟斤拷为锟斤拷锟斤拷
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, iXMotScanDistance, CInstancePCR::MOTOR_REVERSE);  // 执锟叫凤拷锟斤拷锟剿讹拷
 	if (!bReturn)
 		return FALSE;
 
-	// 执行反向X轴扫描
+	// 执锟叫凤拷锟斤拷X锟斤拷扫锟斤拷
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
 	if (!bReturn)
 		return FALSE;
 
 
-	// 判断用户是否点击了停止扫描
+	// 锟叫讹拷锟矫伙拷锟角凤拷锟斤拷锟斤拷停止扫锟斤拷
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// 直接终止扫描，复位电机
+		// 直锟斤拷锟斤拷止扫锟借，锟斤拷位锟斤拷锟?
 		goto RETURN_HOME;
 
 	}
@@ -1197,36 +1197,36 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 
 	if (bReturn)
 	{
-		for (int i = 0; i < 43000; i += 100)  // 每100ms检查一次
+		for (int i = 0; i < 43000; i += 100)  // 每100ms锟斤拷锟揭伙拷锟?
 		{
 			if (NULL != pBeAskTop && *pBeAskTop)
 			{
-				// 直接终止加热等待并复位电机
+				// 直锟斤拷锟斤拷止锟斤拷锟饺等达拷锟斤拷锟斤拷位锟斤拷锟?
 				goto RETURN_HOME;
 			}
-			Sleep(100);  // 每次休眠100毫秒
+			Sleep(100);  // 每锟斤拷锟斤拷锟斤拷100锟斤拷锟斤拷
 		}
 	}
 
 RETURN_HOME:
-	// 让Y轴都返回原位
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_Y, 0, CInstancePCR::MOTOR_MOVE_TO);  // Y轴返回原位
+	// 锟斤拷Y锟结都锟斤拷锟斤拷原位
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_Y, 0, CInstancePCR::MOTOR_MOVE_TO);  // Y锟结返锟斤拷原位
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y轴返回原位失败"));
+		OutputDebugString(_T("Y锟结返锟斤拷原位失锟斤拷"));
 #endif
 		return FALSE;
 	}
 
 
 
-	// 让X轴返回原位
-	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, 0, CInstancePCR::MOTOR_MOVE_TO);  // X轴返回原位
+	// 锟斤拷X锟结返锟斤拷原位
+	bReturn = MotorMove(CInstancePCR::UNIT_MOTOR_X, 0, CInstancePCR::MOTOR_MOVE_TO);  // X锟结返锟斤拷原位
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("X轴返回原位失败"));
+		OutputDebugString(_T("X锟结返锟斤拷原位失锟斤拷"));
 #endif
 		return FALSE;
 	}
@@ -1285,7 +1285,7 @@ BOOL CInstancePCR::SetStateLED(BYTE cMode)
 	return bReturn;
 }
 
-// 发送设置PMT控制电压命令
+// 锟斤拷锟斤拷锟斤拷锟斤拷PMT锟斤拷锟狡碉拷压锟斤拷锟斤拷
 BOOL CInstancePCR::SetPMTGain(WORD wGainPara)
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN7, PCR_PMT_GAIN, wGainPara);
@@ -1319,7 +1319,7 @@ if (pStatus) delete[] pStatus;
 	return bReturn;
 }
 
-// PCR 控温模式
+// PCR 锟斤拷锟斤拷模式
 BOOL CInstancePCR::SetTempCtrlMode(eTempCtrlMode nCtrlMode)
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN6, PCR_TEMP_MODE, nCtrlMode);
@@ -1368,7 +1368,7 @@ WORD CInstancePCR::GetPMTGain()
 	return wPMTGain;
 }
 
-// 取得系统定义的预设温度参数
+// 取锟斤拷系统锟斤拷锟斤拷锟皆わ拷锟斤拷露炔锟斤拷锟?
 float CInstancePCR::GetSysTemp(eSysTempType nType)
 {
 	float fTemp = 0.0f;
@@ -1398,7 +1398,7 @@ float CInstancePCR::GetSysTemp(eSysTempType nType)
 }
 
 
-// 设置热盖温度
+// 锟斤拷锟斤拷锟饺革拷锟铰讹拷
 BOOL CInstancePCR::SetLidHeaterTemp(float fTemp)
 {
 	WORD wTemp = (WORD)(fTemp * RESOLUTION_TEMP + 0.5);
@@ -1413,8 +1413,8 @@ BOOL CInstancePCR::SetLidHeaterTemp(float fTemp)
 	}
 	else
 	{
-		m_iErrorPara1 = TEMP_CHANNEL_LID; // 表示热盖
-		m_iErrorPara2 = wTemp; // 温度
+		m_iErrorPara1 = TEMP_CHANNEL_LID; // 锟斤拷示锟饺革拷
+		m_iErrorPara2 = wTemp; // 锟铰讹拷
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
 			m_uiErrorCode = ERR_LASER_SET_FAIL;
@@ -1432,8 +1432,8 @@ BOOL CInstancePCR::SetLidHeaterTemp(float fTemp)
 	return bReturn;
 }
 
-// 取得仪器控温时到达目标温度的合理偏差
-// 下位机反馈“温度到标识位”置1时， 实际温度值与目标温度值之间所允许的合理偏差范围
+// 取锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷目锟斤拷锟铰度的猴拷锟斤拷偏锟斤拷
+// 锟斤拷位锟斤拷锟斤拷锟斤拷锟斤拷锟铰度碉拷锟斤拷识位锟斤拷锟斤拷1时锟斤拷 实锟斤拷锟铰讹拷值锟斤拷目锟斤拷锟铰讹拷值之锟斤拷锟斤拷锟斤拷锟斤拷锟侥猴拷锟斤拷偏锟筋范围
 float CInstancePCR::GetTempLegalGap()
 {
 	float fReturn = m_sStructurePara.cTempLegalGap;
@@ -1448,14 +1448,14 @@ float CInstancePCR::GetLidTempLegalGap()
 	return fReturn;
 }
 
-// 热盖升温最长时间，单位：秒，默认15分钟
+// 锟饺革拷锟斤拷锟斤拷锟筋长时锟戒，锟斤拷位锟斤拷锟诫，默锟斤拷15锟斤拷锟斤拷
 int CInstancePCR::GetMaxLidHeatSecond()
 {
 	int iMaxTime = m_sStructurePara.cLidTempMaxTime * 1;
 	return iMaxTime;
 }
 
-// 取得最长控温时间，默认60秒
+// 取锟斤拷锟筋长锟斤拷锟斤拷时锟戒，默锟斤拷60锟斤拷
 int CInstancePCR::GetMaxTempCtrlSecond()
 {
 	int iMaxTime = m_sStructurePara.cTempCtrlMaxTime;
@@ -1476,7 +1476,7 @@ int CInstancePCR::GetLidState(int& iStatus)
 	return -1;
 }
 
-// 取得有几个加热通道，不包括热盖
+// 取锟斤拷锟叫硷拷锟斤拷锟斤拷锟斤拷通锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟饺革拷
 int CInstancePCR::GetTempChannelCount()
 {
 	int iCount = m_sStructurePara.cTempChannelCount;
@@ -1493,7 +1493,7 @@ int CInstancePCR::GetMeltPreDelay()
 	return iMaxTime;
 }
 
-// 熔解单步最小增量
+// 锟桔解单锟斤拷锟斤拷小锟斤拷锟斤拷
 float CInstancePCR::GetMeltMinIncrement()
 {
 	float fIncrement = m_sStructurePara.cMeltMinIncrement;
@@ -1503,7 +1503,7 @@ float CInstancePCR::GetMeltMinIncrement()
 
 
 
-// 扫描指定通道一次需要时间，单位
+// 扫锟斤拷指锟斤拷通锟斤拷一锟斤拷锟斤拷要时锟戒，锟斤拷位
 int CInstancePCR::GetScanOnceTime(BOOL bIsSecond)
 {
 	int iMaxTime = m_sStructurePara.wScanOnceTime;
@@ -1514,7 +1514,7 @@ int CInstancePCR::GetScanOnceTime(BOOL bIsSecond)
 	return iMaxTime;
 }
 
-// 完成一次扫描X轴运行次数
+// 锟斤拷锟揭伙拷锟缴拷锟絏锟斤拷锟斤拷锟叫达拷锟斤拷
 int CInstancePCR::GetScanRowCount()
 {
 	int iCount = 0;
@@ -1535,7 +1535,7 @@ int CInstancePCR::GetScanRowCount()
 	return iCount;
 }
 
-// 取得校准通道
+// 取锟斤拷校准通锟斤拷
 int CInstancePCR::GetCalibrateChannel()
 {
 	int iChannel = -1;
@@ -1552,7 +1552,7 @@ int CInstancePCR::GetCalibrateChannel()
 	return iChannel;
 }
 
-// 只返回扫描光路通道数，返回存在的通道总数，中间不用通道也是存在
+// 只锟斤拷锟斤拷扫锟斤拷锟铰吠拷锟斤拷锟斤拷锟斤拷锟斤拷卮锟斤拷诘锟酵拷锟斤拷锟斤拷锟斤拷锟斤拷屑洳伙拷锟酵拷锟揭诧拷谴锟斤拷锟?
 int CInstancePCR::GetScanChannelCount()
 {
 	int iMaxChannel = -1;
@@ -1601,8 +1601,8 @@ BOOL CInstancePCR::SetMultiTemp(float fTemp1, float fTemp2, float fTemp3, float 
 	}
 	else
 	{
-		m_iErrorPara1 = 7; // 表示3个温度通道
-		m_iErrorPara2 = wTemp1; // 温度
+		m_iErrorPara1 = 7; // 锟斤拷示3锟斤拷锟铰讹拷通锟斤拷
+		m_iErrorPara2 = wTemp1; // 锟铰讹拷
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
 			m_uiErrorCode = ERR_LASER_SET_FAIL;
@@ -1642,7 +1642,7 @@ BOOL CInstancePCR::SetPWMTemp(float fTemp1, float fTemp2, float fTemp3, WORD Pwm
 	pCmd[1] = PCR_SETPWM;
 	pCmd[3] = 17;
 
-	//温度值
+	//锟铰讹拷值
 	pCmd[4] = (BYTE)(wTemp1 >> 8);
 	pCmd[5] = (BYTE)(wTemp1 & 0xFF);
 	pCmd[6] = (BYTE)(wTemp2 >> 8);
@@ -1658,7 +1658,7 @@ BOOL CInstancePCR::SetPWMTemp(float fTemp1, float fTemp2, float fTemp3, WORD Pwm
 	pCmd[14] = (BYTE)(Pwm3 >> 8);
 	pCmd[15] = (BYTE)(Pwm3 & 0xFF);
 
-	//校验和
+	//校锟斤拷锟?
 	for (int i = 0; i < 16; ++i)
 	{
 		pCmd[16] += pCmd[i];
@@ -1674,8 +1674,8 @@ BOOL CInstancePCR::SetPWMTemp(float fTemp1, float fTemp2, float fTemp3, WORD Pwm
 	}
 	else
 	{
-		m_iErrorPara1 = 7; // 表示3个温度通道
-		m_iErrorPara2 = wTemp1; // 温度
+		m_iErrorPara1 = 7; // 锟斤拷示3锟斤拷锟铰讹拷通锟斤拷
+		m_iErrorPara2 = wTemp1; // 锟铰讹拷
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
 			m_uiErrorCode = ERR_LASER_SET_FAIL;
@@ -1727,7 +1727,7 @@ BOOL CInstancePCR::SetLaserStatus(BYTE cType, BYTE cStatus)
 	return bReturn;
 }
 
-// 读取指定通道温度
+// 锟斤拷取指锟斤拷通锟斤拷锟铰讹拷
 BOOL CInstancePCR::ReadChannelTemp(BYTE cChannel, float& fTempCh, BOOL& bToTarget)
 {
 	if (cChannel == TEMP_CHANNEL_ENVIRONMENT)
@@ -1756,7 +1756,7 @@ BOOL CInstancePCR::ReadChannelTemp(BYTE cChannel, float& fTempCh, BOOL& bToTarge
 	}
 	else
 	{
-		m_iErrorPara1 = cChannel; // 表示通道
+		m_iErrorPara1 = cChannel; // 锟斤拷示通锟斤拷
 		m_iErrorPara2 = 0;
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
@@ -1785,7 +1785,7 @@ BOOL CInstancePCR::ReadChannelTemp(BYTE cChannel, float& fTempCh, BOOL& bToTarge
 	return bReturn;
 }
 
-// 读取PCR仪温度
+// 锟斤拷取PCR锟斤拷锟铰讹拷
 BOOL CInstancePCR::ReadPCRTemp(float& fTempPCR, BOOL& bToTarget)
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN6, PCR_READ_PCRTEMP, 0);
@@ -1809,7 +1809,7 @@ BOOL CInstancePCR::ReadPCRTemp(float& fTempPCR, BOOL& bToTarget)
 	}
 	else
 	{
-		m_iErrorPara1 = 0; // 无效值
+		m_iErrorPara1 = 0; // 锟斤拷效值
 		m_iErrorPara2 = 0;
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
@@ -1843,9 +1843,6 @@ BOOL CInstancePCR::ReadFLUData(CUIntArray& arrayData, BYTE cChannel, BYTE cFrmIn
 	BOOL bReturn = FALSE;
 	if (iReturn == CSerialPortPCR::RETURN_OK)
 	{
-		//xzq:增加临时数组变量
-		UINT uintFludata[200];
-		int iIndex = 0;
 		for (int i = 4; i + 1 < iReceiveFrameLen - 2; i += 2)
 		{
 			UINT nFludata = 0;
@@ -1853,73 +1850,7 @@ BOOL CInstancePCR::ReadFLUData(CUIntArray& arrayData, BYTE cChannel, BYTE cFrmIn
 			nFludata = nFludata << 8;
 			nFludata &= 0xFF00;
 			nFludata |= pStatus[i];
-			//xzq:注释掉，先赋值到临时变量，然后再重新组织数据
-			//arrayData.Add(nFludata);
-			uintFludata[iIndex] = nFludata;
-			iIndex++;
-		}
-		//xzq:将96管的数据转换成18管的数据，在96管的A,C,E排，1，3，5，7，9，11,
-		for (int j = 0; j < 18; j++)
-		{
-		
-			UINT* nFludata;
-			switch (j)
-			{
-			case 0:
-				arrayData.Add(uintFludata[0]);
-				break;
-			case 1:
-				arrayData.Add(uintFludata[1]);
-				break;
-			case 2:
-				arrayData.Add(uintFludata[2]);
-				break;
-			case 3:
-				arrayData.Add(uintFludata[3]);
-				break;
-			case 4:
-				arrayData.Add(uintFludata[4]);
-				break;
-			case 5:
-				arrayData.Add(uintFludata[5]);
-				break;
-			case 6:
-				arrayData.Add(uintFludata[6]);
-				break;
-			case 7:
-				arrayData.Add(uintFludata[7]);
-				break;
-			case 8:
-				arrayData.Add(uintFludata[8]);
-				break;
-			case 9:
-				arrayData.Add(uintFludata[9]);
-				break;
-			case 10:
-				arrayData.Add(uintFludata[10]);
-				break;
-			case 11:
-				arrayData.Add(uintFludata[11]);
-				break;
-			case 12:
-				arrayData.Add(uintFludata[12]);
-				break;
-			case 13:
-				arrayData.Add(uintFludata[13]);
-				break;
-			case 14:
-				arrayData.Add(uintFludata[14]);
-				break;
-			case 15:
-				arrayData.Add(uintFludata[15]);
-				break;
-			case 16:
-				arrayData.Add(uintFludata[16]);
-				break;
-			case 17:
-				arrayData.Add(uintFludata[17]);
-				break;
-			}
+			arrayData.Add(nFludata);
 		}
 
 		bReturn = TRUE;
@@ -1976,7 +1907,7 @@ BOOL CInstancePCR::ReadAllFLUData(CUIntArray* pAryData, int iChanNum)
 	return bReturn;
 }
 
-// 读取设备状态，在实验过程中使用
+// 锟斤拷取锟借备状态锟斤拷锟斤拷实锟斤拷锟斤拷锟斤拷锟绞癸拷锟?
 BOOL CInstancePCR::ReadDeviceStatus()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_DEVICE_STATUS, 0);
@@ -1991,7 +1922,7 @@ BOOL CInstancePCR::ReadDeviceStatus()
 	}
 	else
 	{
-		m_iErrorPara1 = 0; // 无效值
+		m_iErrorPara1 = 0; // 锟斤拷效值
 		m_iErrorPara2 = 0;
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
@@ -2016,7 +1947,7 @@ BOOL CInstancePCR::ReadDeviceStatus()
 	return bReturn;
 }
 
-// 根据返回参数对仪器状态进行保存
+// 锟斤拷锟捷凤拷锟截诧拷锟斤拷锟斤拷锟斤拷锟斤拷状态锟斤拷锟叫憋拷锟斤拷
 void CInstancePCR::SetDeviceStatusBy(int iLength, BYTE* pStatus)
 {
 	m_sDeviceStatus.cXMot = (pStatus[0] & (1 << 1)) >> 1;
@@ -2036,7 +1967,7 @@ void CInstancePCR::SetDeviceStatusBy(int iLength, BYTE* pStatus)
 	m_sDeviceStatus.cA4940Rst = (pStatus[1] & (1 << 6)) >> 6;
 	m_sDeviceStatus.cSysBox = (pStatus[1] & (1 << 7)) >> 7;
 
-	// 协议修改增加了2个字节作为返回参数
+	// 协锟斤拷锟睫革拷锟斤拷锟斤拷锟斤拷2锟斤拷锟街斤拷锟斤拷为锟斤拷锟截诧拷锟斤拷
 	if (iLength > 2)
 	{
 		m_sDeviceStatus.cLid = (pStatus[2] & (1));
@@ -2044,8 +1975,8 @@ void CInstancePCR::SetDeviceStatusBy(int iLength, BYTE* pStatus)
 }
 
 
-// 读取设备状态（读取下位机运行的状态，包括各个硬件设备的标志、错误等，仪器运行状态69字节）
-// 该命令在指令交互过程中参数解析异常时调用 
+// 锟斤拷取锟借备状态锟斤拷锟斤拷取锟斤拷位锟斤拷锟斤拷锟叫碉拷状态锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷硬锟斤拷锟借备锟侥憋拷志锟斤拷锟斤拷锟斤拷龋锟斤拷锟斤拷锟斤拷锟斤拷锟阶达拷?9锟街节ｏ拷
+// 锟斤拷锟斤拷锟斤拷锟斤拷指锟筋交锟斤拷锟斤拷锟斤拷锟叫诧拷锟斤拷锟斤拷锟斤拷锟届常时锟斤拷锟斤拷 
 BOOL CInstancePCR::ReadHardwareStatus()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_HARDWARE_STATUS, 0);
@@ -2060,7 +1991,7 @@ BOOL CInstancePCR::ReadHardwareStatus()
 	}
 	else
 	{
-		m_iErrorPara1 = 0; // 无效值
+		m_iErrorPara1 = 0; // 锟斤拷效值
 		m_iErrorPara2 = 0;
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{
@@ -2202,7 +2133,7 @@ void CInstancePCR::SetHardwareStatus(BYTE* state)
 	m_sHardwareStatus.wPET3PWMOut = WORD(m_sHardwareStatus.wPET3PWMOut << 8) + state[77];  ///<
 }
 
-// 输出硬件状态信息到错误日志中
+// 锟斤拷锟接诧拷锟阶刺拷锟较拷锟斤拷锟斤拷锟斤拷锟街撅拷锟?
 void CInstancePCR::OutputHardwareStatusToErrorLog()
 {
 	CString str;
@@ -2536,13 +2467,13 @@ eTempCtrlMode CInstancePCR::GetTempCtrlMode()
 	return eTempCtrlMode(m_sStructurePara.cTempCtrl);
 }
 
-// 是否有进出仓
+// 锟角凤拷锟叫斤拷锟斤拷锟斤拷
 BOOL CInstancePCR::HasBox()
 {
 	return BOOL(m_sStructurePara.cUseBox);
 }
 
-// 是否有热盖
+// 锟角凤拷锟斤拷锟饺革拷
 BOOL CInstancePCR::HasLid()
 {
 	return BOOL(m_sStructurePara.cLidHeader);
@@ -2589,7 +2520,7 @@ int CInstancePCR::SensorModuleCheck()
 
 	m_sensorMChkParam.ResetCheckResult();
 
-	//环境温度传感器
+	//锟斤拷锟斤拷锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckEnvirTsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_ENVIRONMENT, fTem, bTarget))
@@ -2613,7 +2544,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//热沉温度传感器
+	//锟饺筹拷锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckHeatSinkTsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_HEATSINK, fTem, bTarget))
@@ -2637,7 +2568,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//热盖温度传感器
+	//锟饺革拷锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckLidTsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_LID, fTem, bTarget))
@@ -2661,7 +2592,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//帕尔贴1温度传感器
+	//锟斤拷锟斤拷锟斤拷1锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckPelt1Tsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_PET1, fTem, bTarget))
@@ -2685,7 +2616,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//帕尔贴2温度传感器
+	//锟斤拷锟斤拷锟斤拷2锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckPelt2Tsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_PET2, fTem, bTarget))
@@ -2709,7 +2640,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//帕尔贴3温度传感器
+	//锟斤拷锟斤拷锟斤拷3锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckPelt3Tsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_PET3, fTem, bTarget))
@@ -2733,7 +2664,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//电源温度传感器
+	//锟斤拷源锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckPowerTsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_POWER, fTem, bTarget))
@@ -2757,7 +2688,7 @@ int CInstancePCR::SensorModuleCheck()
 		}
 	}
 
-	//扫描温度传感器
+	//扫锟斤拷锟铰度达拷锟斤拷锟斤拷
 	if (m_sensorMChkParam.IsCheckScanTsm())
 	{
 		if (!ReadChannelTemp(TEMP_CHANNEL_SCAN, fTem, bTarget))
@@ -2812,13 +2743,13 @@ int CInstancePCR::HeatModeduleCheck()
 
 	m_heatModuleChkParam.ResetCheckResult();
 
-	//帕尔贴升降温检测
+	//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟铰硷拷锟?
 	for (int i = 0; i < 3; ++i)
 	{
 		pPeltierChkParam = m_heatModuleChkParam.GetPeltierCheckParam(0);
 		if (NULL != pPeltierChkParam && pPeltierChkParam->IsCheck())
 		{
-			//获取当前温度
+			//锟斤拷取锟斤拷前锟铰讹拷
 			if (!ReadChannelTemp(++byChanId, fTem, bTarget))
 			{
 				iErrId = -1;
@@ -2826,7 +2757,7 @@ int CInstancePCR::HeatModeduleCheck()
 			}
 			fOriginTem = fTem;
 
-			//获取升温和降温参数
+			//锟斤拷取锟斤拷锟铰和斤拷锟铰诧拷锟斤拷
 			if (fTem > pPeltierChkParam->GetTemperatureThreshold())
 			{
 				iSlpSec = pPeltierChkParam->GetDropTimeSec();
@@ -2863,14 +2794,14 @@ int CInstancePCR::HeatModeduleCheck()
 				fTemPeltier3 = fSetTem;
 			}
 
-			//设置目标温度，降温或者升温
+			//锟斤拷锟斤拷目锟斤拷锟铰度ｏ拷锟斤拷锟铰伙拷锟斤拷锟斤拷锟斤拷
 			if (!SetMultiTemp(fTemPeltier1, fTemPeltier2, fTemPeltier3, 0, TEMP_CTRL_NORMAL, TRUE))
 			{
 				iErrId = -2;
 				goto COMMU_FAILED;
 			}
 
-			//延时等待
+			//锟斤拷时锟饺达拷
 			/*for(int j = 0;j < iSlpSec;++j)
 			{
 				if(!ReadChannelTemp(byChanId,fTemPublic,bTarget))
@@ -2887,7 +2818,7 @@ int CInstancePCR::HeatModeduleCheck()
 				Sleep(1);
 			}*/
 
-			//再次获取当前温度
+			//锟劫次伙拷取锟斤拷前锟铰讹拷
 			if (!ReadChannelTemp(byChanId, fTem, bTarget))
 			{
 				iErrId = -3;
@@ -2901,7 +2832,7 @@ int CInstancePCR::HeatModeduleCheck()
 			goto COMMU_FAILED;
 			}*/
 
-			//判断特定时间内是否到达目标温度特定范围内
+			//锟叫讹拷锟截讹拷时锟斤拷锟斤拷锟角否到达拷目锟斤拷锟铰讹拷锟截讹拷锟斤拷围锟斤拷
 			if (abs(fTem - fSetTem) > dTemError)
 			{
 				if (0 == i)
@@ -2941,14 +2872,14 @@ int CInstancePCR::HeatModeduleCheck()
 				fTemPeltier3 = fOriginTem;
 			}
 
-			//再次设置目标温度，升温或者降温
+			//锟劫达拷锟斤拷锟斤拷目锟斤拷锟铰度ｏ拷锟斤拷锟铰伙拷锟竭斤拷锟斤拷
 			if (!SetMultiTemp(fTemPeltier1, fTemPeltier2, fTemPeltier3, 0, TEMP_CTRL_NORMAL, TRUE))
 			{
 				iErrId = -4;
 				goto COMMU_FAILED;
 			}
 
-			//延时等待
+			//锟斤拷时锟饺达拷
 			/*for(int j = 0;j < iSlpSec2;++j)
 			{
 				if(!ReadChannelTemp(byChanId,fTemPublic,bTarget))
@@ -2965,14 +2896,14 @@ int CInstancePCR::HeatModeduleCheck()
 				Sleep(1);
 			}*/
 
-			//再次获取当前温度
+			//锟劫次伙拷取锟斤拷前锟铰讹拷
 			if (!ReadChannelTemp(byChanId, fTem, bTarget))
 			{
 				iErrId = -5;
 				goto COMMU_FAILED;
 			}
 
-			//判断特定时间内是否到达目标温度特定范围内
+			//锟叫讹拷锟截讹拷时锟斤拷锟斤拷锟角否到达拷目锟斤拷锟铰讹拷锟截讹拷锟斤拷围锟斤拷
 			/*if(abs(fTem - fOriginTem) > dTemError2)
 			{
 				if(0 == i)
@@ -2994,7 +2925,7 @@ int CInstancePCR::HeatModeduleCheck()
 		}
 	}
 
-	//自检结束时，获取当前温度判断需不需要降温
+	//锟皆硷拷锟斤拷锟绞憋拷锟斤拷锟饺★拷锟角帮拷露锟斤拷卸锟斤拷璨伙拷锟揭拷锟斤拷锟?
 	if (!ReadPCRTemp(fTem, bTarget))
 	{
 		iErrId = -6;
@@ -3010,7 +2941,7 @@ int CInstancePCR::HeatModeduleCheck()
 		Sleep(10);
 	}
 
-	//释放帕尔贴温控
+	//锟酵凤拷锟斤拷锟斤拷锟斤拷锟铰匡拷
 	if (!SetMultiTemp(PCR_TEMP_RELEASE, PCR_TEMP_RELEASE, PCR_TEMP_RELEASE, 0, TEMP_CTRL_NORMAL))
 	{
 		iErrId = -8;
@@ -3041,7 +2972,7 @@ int CInstancePCR::OpticsModuleCheck()
 {
 	int iErrId = 0;
 
-	//打开所有LED灯
+	//锟斤拷锟斤拷锟斤拷LED锟斤拷
 	if (!SetLaserStatus(2, 0XFF))
 	{
 		iErrId = -1;
@@ -3050,7 +2981,7 @@ int CInstancePCR::OpticsModuleCheck()
 
 	Sleep(30);
 
-	//关闭所有LED灯
+	//锟截憋拷锟斤拷锟斤拷LED锟斤拷
 	if (!SetLaserStatus(2, 0))
 	{
 		iErrId = -2;
@@ -3127,7 +3058,7 @@ BOOL CInstancePCR::ReadStructureParamsFromEPROM()
 		}
 		else
 		{
-			//读取热盖温度
+			//锟斤拷取锟饺革拷锟铰讹拷
 			nAddress = 0X2027;
 			if (ReadEPROM(nAddress, 1, pReceive)) // 0X550
 			{
@@ -3141,7 +3072,7 @@ BOOL CInstancePCR::ReadStructureParamsFromEPROM()
 		}
 	}
 
-	//读取仪器实际使用到的热盖温度（EEPROM），并写入到0X2027地址
+	//锟斤拷取锟斤拷锟斤拷实锟斤拷使锟矫碉拷锟斤拷锟饺革拷锟铰度ｏ拷EEPROM锟斤拷锟斤拷锟斤拷写锟诫到0X2027锟斤拷址
 	if (bReturn)
 	{
 		bReturn = ReadLidTemperatureFromEEPROMPLCUsed();
@@ -3153,7 +3084,7 @@ BOOL CInstancePCR::ReadStructureParamsFromEPROM()
 	return bReturn;
 }
 
-// 读取指定地址和长度的EEPROM参数
+// 锟斤拷取指锟斤拷锟斤拷址锟酵筹拷锟饺碉拷EEPROM锟斤拷锟斤拷
 BOOL CInstancePCR::ReadEPROM(UINT nAddress, BYTE cGetLength, BYTE* pReceive)
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN9, PCR_RDEE, nAddress, cGetLength);
@@ -3203,8 +3134,8 @@ BOOL CInstancePCR::WriteEPROM(UINT nAddress, int iData, int iDataLen)
 	memset(pCommand, 0, iCmdLen);
 
 	pCommand[0] = PCR_DNSEND;//帧头
-	pCommand[1] = PCR_WDEE; //命令字
-	pCommand[3] = iCmdLen; //长度
+	pCommand[1] = PCR_WDEE; //锟斤拷锟斤拷锟斤拷
+	pCommand[3] = iCmdLen; //锟斤拷锟斤拷
 	pCommand[4] = (BYTE)((nAddress & 0xFF0000) >> 16);
 	pCommand[5] = (BYTE)((nAddress & 0xFF00) >> 8);
 	pCommand[6] = (BYTE)(nAddress & 0xFF);
@@ -3213,7 +3144,7 @@ BOOL CInstancePCR::WriteEPROM(UINT nAddress, int iData, int iDataLen)
 	{
 		pCommand[7 + i] = BYTE((iData >> (i * 8)) & 0XFF);
 	}
-	pCommand[iCmdLen - 1] = m_pComPort->GetByteSum(pCommand, iCmdLen - 1);//校验和
+	pCommand[iCmdLen - 1] = m_pComPort->GetByteSum(pCommand, iCmdLen - 1);//校锟斤拷锟?
 
 	int iReceiveFrameLen = 0;
 	BYTE* pStatus = NULL;
@@ -3257,7 +3188,7 @@ BOOL CInstancePCR::SetLidTem(int iLidTem)
 	return bReturn;
 }
 
-// 读取超过一次传输长度的数据
+// 锟斤拷取锟斤拷锟斤拷一锟轿达拷锟戒长锟饺碉拷锟斤拷锟斤拷
 BOOL CInstancePCR::ReadLongEPROM(UINT nAddress, UINT nGetLength, BYTE* pReceive)
 {
 	BOOL bReturn = FALSE;
@@ -3352,7 +3283,7 @@ BOOL CInstancePCR::ReadAllTemp(int iTempCount, float* pTemp, BOOL& bToTarget)
 	}
 	else
 	{
-		m_iErrorPara1 = 0; // 无效值
+		m_iErrorPara1 = 0; // 锟斤拷效值
 		m_iErrorPara2 = 0;
 		if (iReturn == CSerialPortPCR::RETURN_FAIL)
 		{

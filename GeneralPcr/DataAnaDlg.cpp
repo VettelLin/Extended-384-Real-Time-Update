@@ -217,7 +217,7 @@ LRESULT CDataAnaDlg::OnMsgPlateSiteSelectChanged(WPARAM wParam,LPARAM lParam)
 	m_samPlateDlg.GetPlateSelectState(m_vecPlateSelectState);
 	m_samPlateDlg.GetPlateSelectedSite(m_vecPlateSelectedSite);
 
-	//¿×Î»Ñ¡Ôñ×´Ì¬¸Ä±ä£¬¸üÐÂÏÔÊ¾ÇúÏß
+	//ï¿½ï¿½Î»Ñ¡ï¿½ï¿½×´Ì¬ï¿½Ä±ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 	UpdateCurveSelectState(TRUE);
 
 	m_crvAml.HandSetGeneralLineXYAxisMinMax();
@@ -226,7 +226,7 @@ LRESULT CDataAnaDlg::OnMsgPlateSiteSelectChanged(WPARAM wParam,LPARAM lParam)
 	m_crvPeakMelt.HandSetGeneralLineXYAxisMinMax();
 	m_crvOriginMelt.HandSetGeneralLineXYAxisMinMax();
 
-	//ÏÔÊ¾·ÖÎö½á¹û
+	//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	ResetResultLst();
 
 	return 1;
@@ -278,7 +278,7 @@ LRESULT CDataAnaDlg::OnMsgThreChanged(WPARAM wParam, LPARAM lParam)
 		return 5;
 	}
 
-	//ÉèÖÃ·ÖÎö²ÎÊýÀïµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½?
 	CThreLineInfo* pThreLineInfo = NULL;
 	if(0 == m_cbSelCrvToShow.GetCurSel())	//DeltaRn
 	{
@@ -286,7 +286,7 @@ LRESULT CDataAnaDlg::OnMsgThreChanged(WPARAM wParam, LPARAM lParam)
 		pAnaAmpParam->dCalcDeltaRnThreshold = pThreLineInfo->GetThreLineValue();
 		pAnaAmpParam->nThresholdType = SPLINE_THRESHOLD_DELTARN;
 	}
-	else if(1 == m_cbSelCrvToShow.GetCurSel())	//¹éÒ»»¯
+	else if(1 == m_cbSelCrvToShow.GetCurSel())	//ï¿½ï¿½Ò»ï¿½ï¿½
 	{
 		pThreLineInfo = m_crvAml.m_vecChanThreInfo[wParam].GetCurSelThreInfo();
 		pAnaAmpParam->dCalcNormalizeThreshold = pThreLineInfo->GetThreLineValue();
@@ -299,7 +299,7 @@ LRESULT CDataAnaDlg::OnMsgThreChanged(WPARAM wParam, LPARAM lParam)
 	}
 	
 	eDataType eDtType = FLU_ORIGINAL;
-	//¼ÆËãÍ¨µÀ¶ÔÓ¦ÇúÏßµÄCtÖµ
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ßµï¿½CtÖµ
 	if(SPLINE_THRESHOLD_DELTARN == pAnaAmpParam->nThresholdType)
 	{
 		if(m_pParent->m_pExpData->GetDeltaRnSelectLogState())
@@ -325,10 +325,10 @@ LRESULT CDataAnaDlg::OnMsgThreChanged(WPARAM wParam, LPARAM lParam)
 		m_pParent->m_pExpData->GenerateOneChannelCt(METHOD_CT_SPLINE,eDtType,wParam + 1);
 	}
 
-	//¸üÐÂÍ¨µÀ±êÇúÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	StdLineProcess(m_pParent->m_pExpData,wParam);
 
-	//¸üÐÂÍ¨µÀ¶ÔÓ¦µÄ½á¹ûÁÐ±í£¨CtÖµ£©
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½CtÖµï¿½ï¿½
 	NewResultCalculated(wParam);
 
 	if(wParam == m_cbSelChanThre.GetCurSel())
@@ -382,13 +382,13 @@ LRESULT CDataAnaDlg::OnMsgTellParentTextChanged(WPARAM wParam, LPARAM lParam)
 		return 7;
 	}
 
-	//ÉèÖÃ·ÖÎö²ÎÊýÀïµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½?
 	CThreLineInfo* pThreLineInfo = NULL;
 	if(0 == m_cbSelCrvToShow.GetCurSel())	//DeltaRn
 	{
 		pThreLineInfo = m_crvAmlDelRn.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
-	else if(1 == m_cbSelCrvToShow.GetCurSel())	//¹éÒ»»¯
+	else if(1 == m_cbSelCrvToShow.GetCurSel())	//ï¿½ï¿½Ò»ï¿½ï¿½
 	{
 		pThreLineInfo = m_crvAml.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
@@ -403,7 +403,7 @@ LRESULT CDataAnaDlg::OnMsgTellParentTextChanged(WPARAM wParam, LPARAM lParam)
 		return 0;
 	}
 
-	//¸üÐÂÇúÏß¿Ø¼þºÍ·ÖÎö²ÎÊýÖÐµÄãÐÖµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Öµ
 	pThreLineInfo->SetThreLineValue(dNewThre);
 	if(pThreLineInfo->m_bAutoThre)
 	{
@@ -416,14 +416,14 @@ LRESULT CDataAnaDlg::OnMsgTellParentTextChanged(WPARAM wParam, LPARAM lParam)
 		pAnaAmpParam->nThresholdType = SPLINE_THRESHOLD_DELTARN;
 		m_crvAmlDelRn.Invalidate(FALSE);
 	}
-	else if(1 == m_cbSelCrvToShow.GetCurSel())	//¹éÒ»»¯
+	else if(1 == m_cbSelCrvToShow.GetCurSel())	//ï¿½ï¿½Ò»ï¿½ï¿½
 	{
 		pAnaAmpParam->dCalcNormalizeThreshold = dNewThre;
 		pAnaAmpParam->nThresholdType = SPLINE_THRESHOLD_NORMALIZE;
 		m_crvAml.Invalidate(FALSE);
 	}
 
-	//¼ÆËãÍ¨µÀ¶ÔÓ¦ÇúÏßµÄCtÖµ
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ßµï¿½CtÖµ
 	if(SPLINE_THRESHOLD_DELTARN == pAnaAmpParam->nThresholdType)
 	{
 		m_pParent->m_pExpData->GenerateOneChannelCt(METHOD_CT_SPLINE,FLU_DELTARN,iCurSel + 1);
@@ -433,10 +433,10 @@ LRESULT CDataAnaDlg::OnMsgTellParentTextChanged(WPARAM wParam, LPARAM lParam)
 		m_pParent->m_pExpData->GenerateOneChannelCt(METHOD_CT_SPLINE,FLU_NORMALIZATE,iCurSel + 1);
 	}
 
-	//¸üÐÂÍ¨µÀ¶ÔÓ¦µÄ½á¹ûÁÐ±í£¨CtÖµ£©
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½CtÖµï¿½ï¿½
 	NewResultCalculated(iCurSel);
 
-	//¸üÐÂÍ¨µÀ±êÇúÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	StdLineProcess(m_pParent->m_pExpData,iCurSel);
 
 	return 1;
@@ -575,8 +575,8 @@ void CDataAnaDlg::CreateCtrl()
 
 void CDataAnaDlg::CreateBt()
 {
-	m_btAxisZoom.Create(_T("Í¼ÐÎÉèÖÃ"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_DATAANALYSEDLG_BT_AXISZOOM);
-	m_btAxisZoom2nd.Create(_T("×ø±êËõ·Å"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_DATAANALYSEDLG_BT_AXISZOOMSECOND);
+	m_btAxisZoom.Create(_T("Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_DATAANALYSEDLG_BT_AXISZOOM);
+	m_btAxisZoom2nd.Create(_T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_DATAANALYSEDLG_BT_AXISZOOMSECOND);
 }
 
 void CDataAnaDlg::CreateSt()
@@ -618,7 +618,7 @@ void CDataAnaDlg::InitCrv()
 	}
 
 	m_crvAml.SetBeUseFloatFunc(TRUE);
-	m_crvAml.SetXAxisTag(_T("Ñ­»·Êý"));
+	m_crvAml.SetXAxisTag(_T("Ñ­ï¿½ï¿½ï¿½ï¿½"));
 	m_crvAml.SetYAxisTag(_T("Rn"));
 
 	m_crvAml.SetYAxisMinOfMax(0.5);
@@ -645,7 +645,7 @@ void CDataAnaDlg::InitCrv()
 
 	m_crvAmlDelRn.SetYAxisMinOfMax(2000);
 	m_crvAmlDelRn.SetBeUseFloatFunc(TRUE);
-	m_crvAmlDelRn.SetXAxisTag(_T("Ñ­»·Êý"));
+	m_crvAmlDelRn.SetXAxisTag(_T("Ñ­ï¿½ï¿½ï¿½ï¿½"));
 	m_crvAmlDelRn.SetYAxisTag(_T("Rn"));
 
 	m_crvAmlDelRn.SetVertEndValue(DEFAULT_FLUMAX);
@@ -673,7 +673,7 @@ void CDataAnaDlg::InitCrv()
 	m_crvOriginAml.SetVertStepNums(10);
 
 	m_crvOriginAml.SetYAxisTag(_T("Fn"));
-	m_crvOriginAml.SetXAxisTag(_T("Ñ­»·Êý"));
+	m_crvOriginAml.SetXAxisTag(_T("Ñ­ï¿½ï¿½ï¿½ï¿½"));
 
 	m_crvOriginAml.SetHoriStartValue(1);
 	m_crvOriginAml.SetHoriEndValue(40);
@@ -698,7 +698,7 @@ void CDataAnaDlg::InitCrv()
 	m_crvPeakMelt.SetVertDecimalPointLength(2);
 
 	m_crvPeakMelt.SetYAxisTag(_T("-d(Rn)/dT"));
-	m_crvPeakMelt.SetXAxisTag(_T("ÎÂ¶È(¡æ)"));
+	m_crvPeakMelt.SetXAxisTag(_T("ï¿½Â¶ï¿½(ï¿½ï¿½)"));
 
 	m_crvPeakMelt.SetHoriStartValue(60);
 	m_crvPeakMelt.SetHoriEndValue(90);
@@ -724,7 +724,7 @@ void CDataAnaDlg::InitCrv()
 	m_crvOriginMelt.SetVertStepNums(10);
 
 	m_crvOriginMelt.SetYAxisTag(_T("Fn"));
-	m_crvOriginMelt.SetXAxisTag(_T("ÎÂ¶È(¡æ)"));
+	m_crvOriginMelt.SetXAxisTag(_T("ï¿½Â¶ï¿½(ï¿½ï¿½)"));
 
 	m_crvOriginMelt.SetHoriStartValue(60);
 	m_crvOriginMelt.SetHoriEndValue(90);
@@ -895,35 +895,35 @@ void CDataAnaDlg::InitLst()
 
 	int index = -1;
 
-	m_lstAnaResult.InsertColumn(++index, _T("ÐòºÅ"));
-	m_lstAnaResult.InsertColumn(++index, _T("·´Ó¦¿×"));
-	m_lstAnaResult.InsertColumn(++index, _T("ÑùÆ·ÀàÐÍ"));
-	m_lstAnaResult.InsertColumn(++index, _T("Ñù±¾ID"));
-	m_lstAnaResult.InsertColumn(++index, _T("Í¨µÀ")); 
-	m_lstAnaResult.InsertColumn(++index, _T("Ä¿±êÐÅÏ¢"));
+	m_lstAnaResult.InsertColumn(++index, _T("No."));
+	m_lstAnaResult.InsertColumn(++index, _T("Well"));
+	m_lstAnaResult.InsertColumn(++index, _T("Product"));
+	m_lstAnaResult.InsertColumn(++index, _T("SampleID"));
+	m_lstAnaResult.InsertColumn(++index, _T("Channel")); 
+	m_lstAnaResult.InsertColumn(++index, _T("Target"));
 	m_lstAnaResult.InsertColumn(++index, GetCtTitle());
 	m_lstAnaResult.InsertColumn(++index, _T("Tm1"));
 	m_lstAnaResult.InsertColumn(++index, _T("Tm2"));
-	m_lstAnaResult.InsertColumn(++index, _T("Å¨¶È"));
-	m_lstAnaResult.InsertColumn(++index, _T("±ê×¼Æ·Å¨¶È"));
-	m_lstAnaResult.InsertColumn(++index, _T("Ñù±¾Ãû³Æ"));
-	m_lstAnaResult.InsertColumn(++index, _T("ÏîÄ¿Ãû³Æ"));
+	m_lstAnaResult.InsertColumn(++index, _T("Conc"));
+	m_lstAnaResult.InsertColumn(++index, _T("StdConc"));
+	m_lstAnaResult.InsertColumn(++index, _T("Result"));
+	m_lstAnaResult.InsertColumn(++index, _T("Item"));
 
-	m_lstAnaResult.InsertColumn(++index, _T("ÑÕÉ«"));
+	m_lstAnaResult.InsertColumn(++index, _T("Color"));
 	m_lstAnaResult.SetColumnColorFunc(index,TRUE);
 
-	m_lstAnaResult.InsertColumn(++index, _T("½áÂÛ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("»¼ÕßÐÕÃû"));
-	//m_lstAnaResult.InsertColumn(++index, _T("ÐÔ±ð"));
-	//m_lstAnaResult.InsertColumn(++index, _T("ÄêÁä"));
-	//m_lstAnaResult.InsertColumn(++index, _T("²ÉÑùÈÕÆÚ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("ËÍ¼ìÒ½Éú"));
-	//m_lstAnaResult.InsertColumn(++index, _T("ËÍ¼ì¿ÆÊÒ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("²¡ÀúºÅ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("²¡´²ºÅ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("×¡ÔººÅ"));
-	//m_lstAnaResult.InsertColumn(++index, _T("ÃÅÕïºÅ"));
-	m_lstAnaResult.InsertColumn(++index, _T("±¸×¢"));
+	m_lstAnaResult.InsertColumn(++index, _T("Method"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½Ô±ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½ï¿½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½Í¼ï¿½Ò½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½Í¼ï¿½ï¿½ï¿½ï¿?));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"));
+	//m_lstAnaResult.InsertColumn(++index, _T("Hospital"));
+	//m_lstAnaResult.InsertColumn(++index, _T("BedNo"));
+	m_lstAnaResult.InsertColumn(++index, _T("Note"));
 
 	m_lstAnaResult.SetColumnColorFunc(13,TRUE);
 
@@ -1034,7 +1034,7 @@ void CDataAnaDlg::ShowCtrl()
 	m_cbSelChanThre.ShowWindow(SW_SHOW);
 	m_edThreValue.ShowWindow(SW_SHOW);
 
-	m_pCurSelCrvToShow = &m_crvAmlDelRn;	//ÐÂ½¨Ò³ÃæÊ±£¬Ä¬ÈÏÏÔÊ¾À©ÔöÇúÏß
+	m_pCurSelCrvToShow = &m_crvAmlDelRn;	//ï¿½Â½ï¿½Ò³ï¿½ï¿½Ê±ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 void CDataAnaDlg::SetCtrlText()
@@ -1063,7 +1063,7 @@ void CDataAnaDlg::SetCtrlText()
 void CDataAnaDlg::SetCrvLineParam(vector<CTubeInfo>& vecTubeInfo)
 {
 	//CExperimentData* pExpData = m_pParent->m_pExpData;
-	CExperimentData* pExpData = m_pParent->m_pExpData;//lzh:ÇúÏßµÄÊý¾Ý
+	CExperimentData* pExpData = m_pParent->m_pExpData;//lzh:ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
 	int iChanNum = pExpData->GetChannelCount();
 	int iTubeNum = pExpData->GetPlateInfo()->GetTubeCount();
 	if(iChanNum < MINIMUM_CHANNUM || iTubeNum < MINIMUM_TUBENUM)
@@ -1071,7 +1071,7 @@ void CDataAnaDlg::SetCrvLineParam(vector<CTubeInfo>& vecTubeInfo)
 
 	int iMaxLineNum = iTubeNum * iChanNum;
 	m_crvOriginAml.SetLineNum(iMaxLineNum);
-	m_crvAml.SetLineNum(iMaxLineNum); // lzh ÉèÖÃÇúÏßÊýÁ¿
+	m_crvAml.SetLineNum(iMaxLineNum); // lzh ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	m_crvAmlDelRn.SetLineNum(iMaxLineNum);
 	m_crvOriginMelt.SetLineNum(iMaxLineNum);
 	m_crvPeakMelt.SetLineNum(iMaxLineNum);
@@ -1192,7 +1192,7 @@ void CDataAnaDlg::SetCrvLineParam(vector<CTubeInfo*>& vecPTubeInfo)
 	}
 
 	int iChanNum = pExpData->GetChannelCount();
-	int iTubeNum = pExpData->GetPlateInfo()->GetTubeCount();//lzh:»ñÈ¡µÄÎÄ¼þÊÇ96¹Ü
+	int iTubeNum = pExpData->GetPlateInfo()->GetTubeCount();//lzh:ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½96ï¿½ï¿½
 	if(iChanNum < MINIMUM_CHANNUM)
 	{
 		return;
@@ -1209,7 +1209,7 @@ void CDataAnaDlg::SetCrvLineParam(vector<CTubeInfo*>& vecPTubeInfo)
 
 	int iMaxLineNum = iTubeNum * iChanNum;
 	m_crvOriginAml.SetLineNum(iMaxLineNum);
-	m_crvAml.SetLineNum(iMaxLineNum); // lzhÉèÖÃÇúÏßµÄÊýÁ¿
+	m_crvAml.SetLineNum(iMaxLineNum); // lzhï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½
 	m_crvAmlDelRn.SetLineNum(iMaxLineNum);
 	m_crvOriginMelt.SetLineNum(iMaxLineNum);
 	m_crvPeakMelt.SetLineNum(iMaxLineNum);
@@ -1319,7 +1319,7 @@ void CDataAnaDlg::SetCrvLineParam(vector<CTubeInfo*>& vecPTubeInfo)
 		m_crvStd.SetLineParam(i,clrLine,i,TRUE);
 		m_crvStd.SetExpressionShowState(i,TRUE);
 
-		//ÉèÖÃÍ¨µÀÈ¾ÁÏÃû
+		//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½
 		strRealTag = pExpData->GetOneChannelDyeName(i);
 		if(strRealTag.IsEmpty())
 		{
@@ -1348,7 +1348,7 @@ int CDataAnaDlg::SetCrvThreLineInfo()
 		return -3;
 	}
 
-	//ÉèÖÃÀ©ÔöÇúÏßãÐÖµ²ÎÊý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 	m_crvAml.m_vecChanThreInfo.clear();
 	m_crvAml.SetBeHaveThreLineFunc(TRUE);
 	m_crvAml.SetBeUseThreLineFunc(TRUE);
@@ -1360,7 +1360,7 @@ int CDataAnaDlg::SetCrvThreLineInfo()
 	chanThreInfo.m_tliNormolize.SetBeShow(TRUE);
 	for(int i = 0;i < iChanNum;++i)
 	{
-		//Ð£×¼Í¨µÀ²»ÏÔÊ¾ãÐÖµÐÅÏ¢
+		//Ð£×¼Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Öµï¿½ï¿½Ï¢
 		if(i == iCalibChanIndex)
 		{
 			continue;
@@ -1391,14 +1391,14 @@ int CDataAnaDlg::SetCrvThreLineInfo()
 	m_crvAml.SetThreLineColor(4,CLR_THREVALUE5);
 	m_crvAml.SetThreLineColor(5,CLR_THREVALUE6);
 
-	//ÉèÖÃÀ©ÔöÇúÏßãÐÖµ²ÎÊý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
 	m_crvAmlDelRn.m_vecChanThreInfo.clear();
 	m_crvAmlDelRn.SetBeHaveThreLineFunc(TRUE);
 	m_crvAmlDelRn.SetBeUseThreLineFunc(TRUE);
 
 	for(int i = 0;i < iChanNum;++i)
 	{
-		//Ð£×¼Í¨µÀ²»ÏÔÊ¾ãÐÖµÐÅÏ¢
+		//Ð£×¼Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Öµï¿½ï¿½Ï¢
 		if(i == iCalibChanIndex)
 		{
 			continue;
@@ -1600,7 +1600,7 @@ void CDataAnaDlg::UpdateCurveSelectState(BOOL bRedraw /*= FALSE*/)
 			if(NULL != pDyeTargetInfo && (pDyeTargetInfo->GetBeSelected() || bDeveloper))
 			{
 #ifdef PS96INSTRUMENT
-				//PS96£¬Èç¹ûÑù±¾ÀàÐÍÎª´ý²âÑù±¾£¬Ñù±¾IDÎª¿Õ£¬²»ÏÔÊ¾¶ÔÓ¦ÇúÏß
+				//PS96ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÎªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 				bValidSamType = !pTubeInfo[i].GetBeNoneSampleType();
 				if(bValidSamType)
 				{
@@ -1717,25 +1717,25 @@ int CDataAnaDlg::SetBaseSet()
 
 	if(anaAmlParamDlg.GetChanged())
 	{
-		//Êý¾Ý´¦Àí
+		//ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
 		DataProcess(TRUE, 2);
 
-		//¸üÐÂÇúÏß¿Ø¼þãÐÖµÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 		ThreLineModified();
 
-		//ÉèÖÃÀ©Ôö¡¢ÈÛÇúÊý¾Ý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(0 != SetCurveData(m_pParent->m_pExpData,TRUE))
 		{
 
 		}
 
-		//¼ÆËã±êÇú
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 		StdLineProcess(m_pParent->m_pExpData);
 
-		//ÖØÖÃ½á¹ûÁÐ±íÐÅÏ¢
+		//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½?
 		ResetResultLst();
 
-		//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 		ShowThreValue();
 	}
 
@@ -1755,7 +1755,7 @@ int CDataAnaDlg::SetMotChannelAdjust()
 		return -2;
 	}
 
-	//´ò¿ª´°¿Ú
+	//ï¿½ò¿ª´ï¿½ï¿½ï¿½
 	CTurbidityParaDlg dlg;
 	dlg.SetTurbidityPara(m_pParent->m_pExpData->GetTurbidityPara());
 	if (dlg.DoModal() == IDOK)
@@ -1765,20 +1765,20 @@ int CDataAnaDlg::SetMotChannelAdjust()
 			m_pParent->m_pExpData->SaveCalibratePara();
 		}
 
-		if (dlg.m_bSetChanged)//·ÖÎö²ÎÊý¸Ä±ä
+		if (dlg.m_bSetChanged)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½
 		{
-			//Êý¾Ý´¦Àí
+			//ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
 			DataProcess(TRUE, 3);
-			//ÉèÖÃÀ©Ôö¡¢ÈÛÇúÊý¾Ý
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(0 != SetCurveData(m_pParent->m_pExpData,TRUE))
 			{
 
 			}
 
-			//¼ÆËã±êÇú
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 			StdLineProcess(m_pParent->m_pExpData);
 
-			//ÖØÖÃ½á¹ûÁÐ±íÐÅÏ¢
+			//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½?
 			ResetResultLst();
 		}
 	}
@@ -1788,7 +1788,7 @@ int CDataAnaDlg::SetMotChannelAdjust()
 
 void CDataAnaDlg::ClearPage(BOOL bRedraw /*= TRUE*/)
 {
-	//Çå¿Õ·ÖÎöÒ³ÃæÊý¾Ý
+	//ï¿½ï¿½Õ·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	m_samPlateDlg.DeleteAllTubeInfo();
 	m_lstAnaResult.Clear(TRUE);
 	m_crvAmlDelRn.DeleteLineData(TRUE);
@@ -1798,7 +1798,7 @@ void CDataAnaDlg::ClearPage(BOOL bRedraw /*= TRUE*/)
 	m_crvOriginMelt.DeleteLineData(TRUE);
 	m_crvStd.DeleteLineData(TRUE);
 
-	//Çå¿Õ·ÖÎöÒ³ÃæÍ¨µÀÑ¡Ôñ°´Å¥µÄÑ¡ÖÐ×´Ì¬
+	//ï¿½ï¿½Õ·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½ï¿½Ñ¡ï¿½ï¿½×´ï¿½?
 	CExperimentData* pExpData = GetExpDataPtr();
 	if(NULL == pExpData)
 	{
@@ -1822,7 +1822,7 @@ int CDataAnaDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
 
 	ClearPage(FALSE);
 
-	//´ò¿ªÎÄ¼þºó£¬ÉèÖÃ·ÖÎöÒ³ÃæÍ¨µÀÎªÈ«Ñ¡×´Ì¬
+	//ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½ÎªÈ«Ñ¡×´Ì¬
 	pExpData->SetDataAnaChannelBtAllSelected();
 	m_pParent->m_funcBtDlg.SetChanBtSelectState(pExpData->GetDataAnaChannelBtSelectState());
 
@@ -1831,27 +1831,27 @@ int CDataAnaDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
 		return 0;
 	}
 
-	//ÉèÖÃÑù±¾ÐÅÏ¢£¨Ñù±¾Ñ¡ÖÐ×´Ì¬¸Ä±ä£¬¸üÐÂ½á¹ûÁÐ±íÐÅÏ¢£©
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬ï¿½Ä±ä£¬ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ï¢ï¿½ï¿?
 	vector<CTubeInfo*> vecPTubeInfo;
 	pExpData->GetAllTubeInfoPtr(vecPTubeInfo);
 	m_samPlateDlg.SetTubeInfo(vecPTubeInfo);
 
-	//³õÊ¼»¯ÇúÏßÐÅÏ¢
+	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	SetCrvLineParam(vecPTubeInfo);
 
-	//ÉèÖÃµ±Ç°²é¿´µÄÇúÏßÀàÐÍ£¨¹éÒ»»¯»òÕßDeltaRn£©£¬ºÍCExperimentData±£³ÖÒ»ÖÂ
+	//ï¿½ï¿½ï¿½Ãµï¿½Ç°ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DeltaRnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CExperimentDataï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 	CheckAmlDataShowType();
 
-	//Êý¾Ý´¦Àí
+	//ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
 	DataProcess(TRUE);
 
-	//ÉèÖÃÀ©Ôö¡¢ÈÛÇúÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(0 != SetCurveData(pExpData,TRUE))
 	{
 		return -2;
 	}
 
-	//ÉèÖÃÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	int iCrvEndValue = pExpData->GetFirstEndCollectCycleNum();
 	int iAmpDataLen = pExpData->GetAmplifyDataNum();
 	if(iAmpDataLen > 1 && iAmpDataLen < iCrvEndValue)
@@ -1864,7 +1864,7 @@ int CDataAnaDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
 	}
 	SetCurveHoriAxisParam(1,iCrvEndValue,1,FALSE);
 
-	//ÉèÖÃÈÛ½âÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	double dStartTem = 60,dEndTem = 90;
 	pExpData->GetFirstMeltCollectStartAndEndTemperature(dStartTem,dEndTem);
 	m_crvOriginMelt.SetHoriStartValue(dStartTem);
@@ -1872,28 +1872,28 @@ int CDataAnaDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
 	m_crvPeakMelt.SetHoriStartValue(dStartTem);
 	m_crvPeakMelt.SetHoriEndValue(dEndTem);
 
-	//ÉèÖÃÀ©Ôö·ÖÎöÇúÏßãÐÖµÏßÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ï¢
 	SetCrvThreLineInfo();
 
-	//¼ÆËã±êÇú
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	StdLineProcess(pExpData);
 
-	//¸üÐÂÇúÏßÏÔÊ¾×´Ì¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾×´Ì¬
 	UpdateCurveSelectState(TRUE);
 
-	//Í¨µÀÈ«Ñ¡Ê±ÒÑ¾­·¢ËÍÁËµ÷ÓÃResetResultLstº¯Êý
+	//Í¨ï¿½ï¿½È«Ñ¡Ê±ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ResetResultLstï¿½ï¿½ï¿½ï¿½
 	m_samPlateDlg.SetAllSelectStateImmediately(TRUE);
 
-	//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	ShowThreValue();
 
-	//´ò¿ªÎÄ¼þÊ±£¬Èç¹ûÃ»ÓÐÄ¬ÈÏ×ø±êÖáÐÅÏ¢£¬ÔòÖØÐÂ¼ÇÂ¼Ã¿¸öÇúÏß¿Ø¼þµÄÄ¬ÈÏÖµ
+	//ï¿½ï¿½ï¿½Ä¼ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½Â¼Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½?
 	if(pExpData->GetDefaultAxisCount() < 1)
 	{
 		RecordDefaultAxisInfo();
 	}
 
-	//ÅÐ¶ÏÏÔÊ¾µÄÇúÏßÀàÐÍ
+	//ï¿½Ð¶ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	AdjudicateAmpMeltWhichToShow();
 
 	return 0;
@@ -1908,28 +1908,28 @@ int CDataAnaDlg::ExperimentOver(CExperimentData* pExpData /*= NULL*/)
 
 	ClearPage(FALSE);
 
-	//´ò¿ªÎÄ¼þºó£¬ÉèÖÃ·ÖÎöÒ³ÃæÍ¨µÀÎªÈ«Ñ¡×´Ì¬
+	//ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½ÎªÈ«Ñ¡×´Ì¬
 	pExpData->SetDataAnaChannelBtAllSelected();
 	m_pParent->m_funcBtDlg.SetChanBtSelectState(pExpData->GetDataAnaChannelBtSelectState());
 
-	//ÉèÖÃÑù±¾ÐÅÏ¢£¨Ñù±¾Ñ¡ÖÐ×´Ì¬¸Ä±ä£¬¸üÐÂ½á¹ûÁÐ±íÐÅÏ¢£©
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬ï¿½Ä±ä£¬ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ï¢ï¿½ï¿?
 	vector<CTubeInfo*> vecPTubeInfo;
 	pExpData->GetAllTubeInfoPtr(vecPTubeInfo);
 	m_samPlateDlg.SetTubeInfo(vecPTubeInfo);
 
-	//ÉèÖÃÇúÏßÑÕÉ«
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 	SetCrvLineParam(vecPTubeInfo);
 
-	//Êý¾Ý´¦Àí
+	//ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
 	DataProcess(TRUE);
 
-	//ÉèÖÃÀ©Ôö¡¢ÈÛÇúÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(0 != SetCurveData(pExpData,TRUE))
 	{
 		return -4;
 	}
 
-	//ÉèÖÃÀ©ÔöÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	int iCrvEndValue = pExpData->GetFirstEndCollectCycleNum();
 	int iAmpDataLen = pExpData->GetAmplifyDataNum();
 	if(iAmpDataLen > 1 && iAmpDataLen < iCrvEndValue)
@@ -1942,7 +1942,7 @@ int CDataAnaDlg::ExperimentOver(CExperimentData* pExpData /*= NULL*/)
 	}
 	SetCurveHoriAxisParam(1,iCrvEndValue,1,FALSE);
 
-	//ÉèÖÃÈÛ½âÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	double dStartTem = 60,dEndTem = 90;
 	pExpData->GetFirstMeltCollectStartAndEndTemperature(dStartTem,dEndTem);
 	m_crvOriginMelt.SetHoriStartValue(dStartTem);
@@ -1950,22 +1950,22 @@ int CDataAnaDlg::ExperimentOver(CExperimentData* pExpData /*= NULL*/)
 	m_crvPeakMelt.SetHoriStartValue(dStartTem);
 	m_crvPeakMelt.SetHoriEndValue(dEndTem);
 
-	//ÉèÖÃÀ©Ôö·ÖÎöÇúÏßãÐÖµÏßÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ï¢
 	SetCrvThreLineInfo();
 
-	//¼ÆËã±êÇú
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	StdLineProcess(pExpData);
 
-	//¸üÐÂÇúÏßÏÔÊ¾×´Ì¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾×´Ì¬
 	UpdateCurveSelectState(TRUE);
 
-	//Í¨µÀÈ«Ñ¡Ê±»áµ÷ÓÃResetResultLstº¯Êý
+	//Í¨ï¿½ï¿½È«Ñ¡Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ResetResultLstï¿½ï¿½ï¿½ï¿½
 	m_samPlateDlg.SetAllSelectStateImmediately(TRUE);
 
-	//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	ShowThreValue();
 
-	//ÅÐ¶ÏÏÔÊ¾µÄÇúÏßÀàÐÍ
+	//ï¿½Ð¶ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	AdjudicateAmpMeltWhichToShow();
 
 	return 0;
@@ -1973,33 +1973,35 @@ int CDataAnaDlg::ExperimentOver(CExperimentData* pExpData /*= NULL*/)
 
 int CDataAnaDlg::ReAnalysed(CExperimentData* pExpData /*= NULL*/)
 {
-	//ÉèÖÃÑù±¾ÐÅÏ¢£¨Ñù±¾Ñ¡ÖÐ×´Ì¬¸Ä±ä£¬¸üÐÂ½á¹ûÁÐ±íÐÅÏ¢£©
-	m_samPlateDlg.SetTubeInfo(pExpData->GetTubeInfoArrayPtr(),TRUE);
+	// Refresh tube info without relying on CPtrArray size equality
+	vector<CTubeInfo*> vecPTubeInfoForSet;
+	pExpData->GetAllTubeInfoPtr(vecPTubeInfoForSet);
+	m_samPlateDlg.SetTubeInfo(vecPTubeInfoForSet, TRUE);
 
-	//ÉèÖÃÇúÏßÑÕÉ«
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 	vector<CTubeInfo*> vecPTubeInfo;
 	pExpData->GetAllTubeInfoPtr(vecPTubeInfo);
 	SetCrvLineParam(vecPTubeInfo);
 
-	//Êý¾Ý´¦Àí
+	//ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
 	DataProcess(TRUE);
 
-	//ÉèÖÃÀ©Ôö¡¢ÈÛÇúÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(0 != SetCurveData(pExpData))
 	{
 		return -2;
 	}
 
-	//¼ÆËã±êÇú
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
 	StdLineProcess(pExpData);
 
-	//¸üÐÂÇúÏßÏÔÊ¾×´Ì¬
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾×´Ì¬
 	UpdateCurveSelectState(TRUE);
 
-	//¸üÐÂ½á¹ûÁÐ±íÐÅÏ¢
+	//ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½?
 	ResetResultLst();
 
-	//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	ShowThreValue();
 
 	ResetCurveMaxMinValue(TRUE);
@@ -2016,7 +2018,7 @@ int CDataAnaDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALSE*/
 
 	eDataType eDtFilter = FLU_FILTER,eDtTypeNormalize = FLU_NORMALIZATE,eDtTypeDeltaRn = FLU_DELTARN;
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	BOOL bShieldYAxisMinOfMax = FALSE;
 	if(pExpData->GetNormalizeSelectLogState())
 	{
@@ -2025,7 +2027,7 @@ int CDataAnaDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALSE*/
 	}
 	m_crvAml.SetBeShieldYAxisMinOfMax(bShieldYAxisMinOfMax);
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	bShieldYAxisMinOfMax = FALSE;
 	int iVertDecimalLen = 0;
 	if(pExpData->GetDeltaRnSelectLogState())
@@ -2037,7 +2039,7 @@ int CDataAnaDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALSE*/
 	m_crvAmlDelRn.SetVertDecimalPointLength(iVertDecimalLen);
 	m_crvAmlDelRn.SetBeShieldYAxisMinOfMax(bShieldYAxisMinOfMax);
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	bShieldYAxisMinOfMax = FALSE;
 	iVertDecimalLen = 0;
 	if(pExpData->GetFilterSelectLogState())
@@ -2114,7 +2116,7 @@ int CDataAnaDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALSE*/
 		pTubeInfo = pExpData->GetTubeInfoAt(j);
 		if(NULL == pTubeInfo)
 		{
-			//¼ÇÂ¼´íÎóÐÅÏ¢
+			//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			continue;
 		}
 		if(SAMPLE_TYPE_NONE == pTubeInfo->GetSampleType())
@@ -2156,7 +2158,7 @@ int CDataAnaDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALSE*/
 				pExpData->GetMeltChannelFluY(j + 1,FLU_FILTER,i,iMeltDataLen,pDY);
 				pExpData->GetMeltChannelFluY(j + 1,MELT_GAINDATA,i,iMeltDataLen,pDYGain);
 
-				//¶ÔÎÂ¶È½øÐÐ´¦Àí£¬·ÀÖ¹ÇúÏß´ò½á
+				//ï¿½ï¿½ï¿½Â¶È½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ß´ï¿½ï¿?
 				double dSlope = 0,dIntercept = 0;
 				if(iMeltDataLen > 1 && 0 == LeastSquare(pDIndex,pDX,iMeltDataLen,dSlope,dIntercept))
 				{
@@ -2305,7 +2307,7 @@ int CDataAnaDlg::SetMeltCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FAL
 			pExpData->GetMeltChannelFluY(j + 1,FLU_FILTER,i,iMeltDataLen,pDY);
 			pExpData->GetMeltChannelFluY(j + 1,MELT_GAINDATA,i,iMeltDataLen,pDYGain);
 
-			//¶ÔÎÂ¶È½øÐÐ´¦Àí£¬·ÀÖ¹ÇúÏß´ò½á
+			//ï¿½ï¿½ï¿½Â¶È½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ß´ï¿½ï¿?
 			double dSlope = 0,dIntercept = 0;
 			if(iMeltDataLen > 1 && 0 == LeastSquare(pDIndex,pDX,iMeltDataLen,dSlope,dIntercept))
 			{
@@ -2369,7 +2371,7 @@ int CDataAnaDlg::SetNormalizeCurveData(CExperimentData* pExpData,BOOL bRedraw /*
 		return -1;
 	}
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	BOOL bShieldYAxisMinOfMax = FALSE,bNormSelLog = pExpData->GetNormalizeSelectLogState();
 	if(bNormSelLog)
 	{
@@ -2399,7 +2401,7 @@ int CDataAnaDlg::SetNormalizeCurveData(CExperimentData* pExpData,BOOL bRedraw /*
 		pTubeInfo = pExpData->GetTubeInfoAt(j);
 		if(NULL == pTubeInfo)
 		{
-			//¼ÇÂ¼´íÎóÐÅÏ¢
+			//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			continue;
 		}
 		if(SAMPLE_TYPE_NONE == pTubeInfo->GetSampleType())
@@ -2454,7 +2456,7 @@ int CDataAnaDlg::SetDeltaRnCurveData(CExperimentData* pExpData,BOOL bRedraw /*= 
 		return -1;
 	}
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	BOOL bShieldYAxisMinOfMax = FALSE,bDeltaRnSelLog = pExpData->GetDeltaRnSelectLogState();
 	int iVertDecimalLen = 0;
 	if(bDeltaRnSelLog)
@@ -2488,7 +2490,7 @@ int CDataAnaDlg::SetDeltaRnCurveData(CExperimentData* pExpData,BOOL bRedraw /*= 
 		pTubeInfo = pExpData->GetTubeInfoAt(j);
 		if(NULL == pTubeInfo)
 		{
-			//¼ÇÂ¼´íÎóÐÅÏ¢
+			//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			continue;
 		}
 		if(SAMPLE_TYPE_NONE == pTubeInfo->GetSampleType())
@@ -2543,7 +2545,7 @@ int CDataAnaDlg::SetFilterCurveData(CExperimentData* pExpData,BOOL bRedraw /*= F
 		return -1;
 	}
 
-	//´¦Àí¡°×Ý×ø±ê×î´óÖµµÄ×îÐ¡ÏÞÖÆ¡±ÊÇ·ñÈ¡Ïû 
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½Ç·ï¿½È¡ï¿½ï¿?
 	BOOL bShieldYAxisMinOfMax = FALSE;
 	int iVertDecimalLen = 0;
 	if(pExpData->GetFilterSelectLogState())
@@ -2576,7 +2578,7 @@ int CDataAnaDlg::SetFilterCurveData(CExperimentData* pExpData,BOOL bRedraw /*= F
 		pTubeInfo = pExpData->GetTubeInfoAt(j);
 		if(NULL == pTubeInfo)
 		{
-			//¼ÇÂ¼´íÎóÐÅÏ¢
+			//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			continue;
 		}
 		if(SAMPLE_TYPE_NONE == pTubeInfo->GetSampleType())
@@ -2689,14 +2691,14 @@ void CDataAnaDlg::ResetResultLst()
 	CExperimentData* pExpData = m_pParent->m_pExpData;
 	if(NULL == pExpData)
 	{
-		//¼ÇÂ¼´íÎóÐÅÏ¢
+		//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		return;
 	}
 
 	int iTubeCount = pExpData->GetTubeCount();
 	if(iTubeCount < 1 || iTubeCount != m_samPlateDlg.m_iTotalSiteNum)
 	{
-		//¼ÇÂ¼´íÎóÐÅÏ¢
+		//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		return;
 	}
 
@@ -2776,7 +2778,7 @@ void CDataAnaDlg::ResetResultLst()
 					strCt.Format(_T("%.2lf"),dCt);
 				}
 
-				//ÏÔÊ¾ÏêÏ¸ÐÅÏ¢
+				//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 				AddOneResult(*pTubeInfo,i,strCt,pDyeTargetInfo->GetTm1String());
 			}
 		}
@@ -2803,14 +2805,14 @@ void CDataAnaDlg::LstResultLanguageChanged()
 	CExperimentData* pExpData = m_pParent->m_pExpData;
 	if(NULL == pExpData)
 	{
-		//¼ÇÂ¼´íÎóÐÅÏ¢
+		//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		return;
 	}
 
 	int iTubeCount = pExpData->GetTubeCount();
 	if(iTubeCount < 1 || iTubeCount != m_samPlateDlg.m_iTotalSiteNum)
 	{
-		//¼ÇÂ¼´íÎóÐÅÏ¢
+		//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		return;
 	}
 
@@ -2903,7 +2905,7 @@ void CDataAnaDlg::AddOneResult(CTubeInfo& tubeInfo,int iChanIndex,CString strCt,
 	m_lstAnaResult.SetItemText(lstAnaRstItemCount,6,strCt);	//CtÖµ
 	m_lstAnaResult.SetItemText(lstAnaRstItemCount,7,strTm);	//Tm1
 	m_lstAnaResult.SetItemText(lstAnaRstItemCount,8,_T(""));	//Tm2
-	m_lstAnaResult.SetItemText(lstAnaRstItemCount,9,tubeInfo.GetCalculatedDensityString(iChanIndex,theApp.m_iStdDensityDpd));	//·´ËãµÄÅ¨¶È
+	m_lstAnaResult.SetItemText(lstAnaRstItemCount,9,tubeInfo.GetCalculatedDensityString(iChanIndex,theApp.m_iStdDensityDpd));	//ï¿½ï¿½ï¿½ï¿½ï¿½Å¨ï¿½ï¿?
 	
 	if(tubeInfo.GetBeNeedDensity())
 	{
@@ -2924,8 +2926,8 @@ void CDataAnaDlg::AddOneResult(CTubeInfo& tubeInfo,int iChanIndex,CString strCt,
 	}
 	m_lstAnaResult.SetItemText(lstAnaRstItemCount,12,strTemp);
 
-	m_lstAnaResult.SetItemColorParam(lstAnaRstItemCount,13,tubeInfo.GetSampleDyeTargetColor(iChanIndex),12 * m_dHoriRatio,12 * m_dVertRatio,2);	//ÑÕÉ«
-	m_lstAnaResult.SetItemText(lstAnaRstItemCount,14,_T(""));	//½áÂÛ
+	m_lstAnaResult.SetItemColorParam(lstAnaRstItemCount,13,tubeInfo.GetSampleDyeTargetColor(iChanIndex),12 * m_dHoriRatio,12 * m_dVertRatio,2);	//ï¿½ï¿½É«
+	m_lstAnaResult.SetItemText(lstAnaRstItemCount,14,_T(""));	//ï¿½ï¿½ï¿½ï¿½
 	m_lstAnaResult.SetItemText(lstAnaRstItemCount,25,tubeInfo.GetComments());
 
 	return;
@@ -2958,7 +2960,7 @@ int CDataAnaDlg::NewResultCalculated(int iChanId)
 	int iTubeCount = pExpData->GetTubeCount();
 	if(iTubeCount < 1 || iTubeCount != m_samPlateDlg.m_iTotalSiteNum)
 	{
-		//¼ÇÂ¼´íÎóÐÅÏ¢
+		//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 		return -6;
 	}
 
@@ -3040,7 +3042,7 @@ int CDataAnaDlg::NewResultCalculated(int iChanId)
 					strCt.Format(_T("%.2lf"),dCt);
 				}
 
-				//ÏÔÊ¾ÏêÏ¸ÐÅÏ¢
+				//ï¿½ï¿½Ê¾ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
 				m_lstAnaResult.SetItemText(iLstRowIndex,CT_COLUMN_INDEX,strCt);
 				m_lstAnaResult.SetItemText(iLstRowIndex,CALCDENSITY_COLUMN_INDEX,pTubeInfo->GetCalculatedDensityString(i,theApp.m_iStdDensityDpd));
 				++iLstRowIndex;
@@ -3142,7 +3144,7 @@ int CDataAnaDlg::AmlDataShowTypeChanged(int iNewIndex)
 				}
 			}
 
-			//ÏÔÊ¾µÄÇúÏßÀàÐÍ¸Ä±ä£¬¸üÐÂãÐÖµÐÅÏ¢
+			//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸Ä±ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 			if(i == m_cbSelChanThre.GetCurSel())
 			{
 				m_edThreValue.SetText(dThre,TRUE,TRUE);
@@ -3159,10 +3161,10 @@ int CDataAnaDlg::AmlDataShowTypeChanged(int iNewIndex)
 		m_pParent->m_pExpData->GenerateCt(TRUE,METHOD_CT_SPLINE,FLU_NORMALIZATE);
 	}
 
-	//ÖØÖÃ½á¹ûÁÐ±íÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½?
 	ResetResultLst();
 
-	//¹éÒ»»¯¡¢DeltaRnÇÐ»»ºó£¬¸üÐÂ±êÇúÐÅÏ¢
+	//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½DeltaRnï¿½Ð»ï¿½ï¿½ó£¬¸ï¿½ï¿½Â±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	StdLineProcess(m_pParent->m_pExpData);
 
 	m_iPreCbSelIndex = iNewIndex;
@@ -3232,9 +3234,9 @@ int CDataAnaDlg::StdLineProcess(CExperimentData* pExpData)
 	}
 
 	m_stdProc.Clear();
-	m_crvStd.DeleteLineData(FALSE);	//¼ÆËãÇ°É¾³ýËùÓÐÍ¨µÀµÄ±êÇúÐÅÏ¢
+	m_crvStd.DeleteLineData(FALSE);	//ï¿½ï¿½ï¿½ï¿½Ç°É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 
-	//ÖØÖÃËùÓÐÑù±¾Ã¿¸öÍ¨µÀµÄ·´ËãÅ¨¶ÈÖµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½Å¨ï¿½ï¿½Öµ
 	CTubeInfo* pTubeInfo = NULL;
 	CDyeTargetInfo* pDyeTargetInfo = NULL;
 	for(int i = 0;i < iTubeNum;++i)
@@ -3303,7 +3305,7 @@ int CDataAnaDlg::StdLineProcess(CExperimentData* pExpData)
 
 		if(0 != pStdLine->m_linearFitData.m_dSlope)
 		{
-			//·´ËãÑù±¾Å¨¶È
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¨ï¿½ï¿½
 			for(int k = 0;k < iChanCount;++k)
 			{
 				if(k != pStdLine->m_stdLineTag.m_iChanId)
@@ -3390,7 +3392,7 @@ int CDataAnaDlg::StdLineProcess(CExperimentData* pExpData,int iChanId)
 	m_stdProc.DeleteOneStdLine(stdLineTag);
 	m_crvStd.DeleteOneLineData(iChanId,FALSE);
 
-	//ÖØÖÃËùÓÐÑù±¾ÔÚiChanIdÍ¨µÀµÄ·´ËãÅ¨¶ÈÖµ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iChanIdÍ¨ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½Å¨ï¿½ï¿½Öµ
 	CTubeInfo* pTubeInfo = NULL;
 	CDyeTargetInfo* pDyeTargetInfo = NULL;
 	for(int i = 0;i < iTubeNum;++i)
@@ -3440,7 +3442,7 @@ int CDataAnaDlg::StdLineProcess(CExperimentData* pExpData,int iChanId)
 
 			if(0 != pStdLine->m_linearFitData.m_dSlope)
 			{
-				//·´ËãÑù±¾Å¨¶È
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¨ï¿½ï¿½
 				for(int k = 0;k < iChanCount;++k)
 				{
 					if(k != pStdLine->m_stdLineTag.m_iChanId)
@@ -3485,7 +3487,7 @@ int CDataAnaDlg::StdLineProcess(CExperimentData* pExpData,int iChanId)
 
 CString CDataAnaDlg::GetCtTitle()
 {
-	//PS96µÄCtÖµ³Æ×÷¡°Tt¡±Öµ£¬¸ù¾ÝÒÇÆ÷ÀàÐÍÈ·¶¨±êÊ¶
+	//PS96ï¿½ï¿½CtÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ttï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ê¶
 	if(NULL == m_pParent->GetSafeHwnd() || NULL == m_pParent->m_pExpData)
 	{
 		return CTTEXTTAG;
@@ -3503,7 +3505,7 @@ CString CDataAnaDlg::GetCtTitle()
 
 CString CDataAnaDlg::GetAverageCtTitle()
 {
-	//PS96µÄCtÖµ³Æ×÷¡°Tt¡±Öµ£¬¸ù¾ÝÒÇÆ÷ÀàÐÍÈ·¶¨±êÊ¶
+	//PS96ï¿½ï¿½CtÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ttï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ê¶
 	return theApp.m_pLangInfo->GetText(227) + GetCtTitle();
 }
 
@@ -3543,7 +3545,7 @@ int CDataAnaDlg::CbSelectCrvToShowChanged()
 	}
 	else if(2 == iCurSel)
 	{
-		//lzh£ºÔ­Ê¼À©ÔöÇúÏß
+		//lzhï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		m_crvOriginAml.ShowWindow(SW_SHOW);
 		m_pCurSelCrvToShow = &m_crvOriginAml;
 	}
@@ -3569,11 +3571,11 @@ int CDataAnaDlg::CbSelectCrvToShowChanged()
 		m_cbSelChanThre.ShowWindow(SW_HIDE);
 	}
 
-	//Ë¢ÐÂãÐÖµ×Ö·û
+	//Ë¢ï¿½ï¿½ï¿½ï¿½Öµï¿½Ö·ï¿½
 
 	InvalidateRect(m_rcThresholdText);
 
-	//Èç¹ûÊÇ¹éÒ»»¯ºÍDeltaRnÇÐ»»£¬¸üÐÂ½á¹ûÁÐ±íCtÖµÐÅÏ¢,20220408
+	//ï¿½ï¿½ï¿½ï¿½Ç¹ï¿½Ò»ï¿½ï¿½ï¿½ï¿½DeltaRnï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½Ð±ï¿½CtÖµï¿½ï¿½Ï¢,20220408
 	
 	return 0;
 }
@@ -3616,13 +3618,13 @@ int CDataAnaDlg::CbSelectChannelThresholdChanged()
 		return -7;
 	}
 
-	//ÉèÖÃ·ÖÎö²ÎÊýÀïµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½?
 	CThreLineInfo* pThreLineInfo = NULL;
 	if(0 == m_cbSelCrvToShow.GetCurSel())	//DeltaRn
 	{
 		pThreLineInfo = m_crvAmlDelRn.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
-	else if(1 == m_cbSelCrvToShow.GetCurSel())	//¹éÒ»»¯
+	else if(1 == m_cbSelCrvToShow.GetCurSel())	//ï¿½ï¿½Ò»ï¿½ï¿½
 	{
 		pThreLineInfo = m_crvAml.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
@@ -3675,13 +3677,13 @@ int CDataAnaDlg::ShowThreValue()
 		return -7;
 	}
 
-	//ÉèÖÃ·ÖÎö²ÎÊýÀïµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½?
 	CThreLineInfo* pThreLineInfo = NULL;
 	if(0 == m_cbSelCrvToShow.GetCurSel())	//DeltaRn
 	{
 		pThreLineInfo = m_crvAmlDelRn.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
-	else if(1 == m_cbSelCrvToShow.GetCurSel())	//¹éÒ»»¯
+	else if(1 == m_cbSelCrvToShow.GetCurSel())	//ï¿½ï¿½Ò»ï¿½ï¿½
 	{
 		pThreLineInfo = m_crvAml.m_vecChanThreInfo[iCurSel].GetCurSelThreInfo();
 	}
@@ -3746,7 +3748,7 @@ int CDataAnaDlg::ResetCurveMaxMinValue(BOOL bRedraw)
 			m_crvOriginMelt.Invalidate(FALSE);
 		}
 
-		//±ê×¼ÇúÏßÌí¼Óµ½ÇúÏß¿Ø¼þÖÐÊ±£¬×î´ó×îÐ¡ÖµÒÑ¾­ÉèÖÃ¹ý£¬²»ÓÃÔÙ´ÎÉèÖÃ
+		//ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Öµï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿½ï¿½ï¿?
 		if(NULL != m_crvStd.GetSafeHwnd())
 		{
 			m_crvStd.Invalidate(FALSE);
@@ -3776,7 +3778,7 @@ void CDataAnaDlg::SetCbSelectChanThreString()
 	{
 		CString strChanId(_T(""));
 		int iChanCount = pExpData->GetChannelCount();
-		if(pExpData->GetBePS96ExperFile())	//PS96µÚÁùÍ¨µÀ²»ÏÔÊ¾ãÐÖµ
+		if(pExpData->GetBePS96ExperFile())	//PS96ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Öµ
 		{
 			iChanCount -= 1;
 		}
@@ -3805,10 +3807,10 @@ int CDataAnaDlg::SetOneChannelDyeName(int iChanId,CString strNewDyeName)
 		return -1;
 	}
 
-	//Ë¢ÐÂ±êÇúÈ¾ÁÏÃûÐÅÏ¢
+	//Ë¢ï¿½Â±ï¿½ï¿½ï¿½È¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	m_crvStd.SetLineParam(iChanId,strNewDyeName,TRUE);
 
-	//Ë¢ÐÂÍ¨µÀÏÂÀ­Ñ¡Ôñ´°¿ÚÄÚÈÝ
+	//Ë¢ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ñ´°¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	int iItemCount = m_cbSelChanThre.GetItemCount();
 	if(iChanId >= iItemCount)
 	{
@@ -3847,25 +3849,25 @@ int CDataAnaDlg::NormalizeLogModeChanged()
 		return -2;
 	}
 
-	//¸üÐÂÇúÏß¿Ø¼þ¶ÔÓ¦µÄÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(0 != SetNormalizeCurveData(m_pParent->m_pExpData,TRUE))
 	{
 		return -3;
 	}
 
-	//¸üÐÂ·ÖÎö²ÎÊýÖÐµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	if(0 != m_pParent->m_pExpData->AutoTransformThresholdValue(0))
 	{
 		return -4;
 	}
 
-	//¸üÐÂÇúÏß¿Ø¼þÖÐµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	if(0 != RenewNormalizeCrvThreLineInfo(TRUE))
 	{
 		return -5;
 	}
 
-	//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	CThreLineInfo* pThreLineInfo = NULL;
 	int iCurSel = m_cbSelChanThre.GetCurSel();
 	if(iCurSel < 0)
@@ -3896,25 +3898,25 @@ int CDataAnaDlg::DeltaRnLogModeChanged()
 		return -2;
 	}
 
-	//¸üÐÂÇúÏß¿Ø¼þ¶ÔÓ¦µÄÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(0 != SetDeltaRnCurveData(m_pParent->m_pExpData,TRUE))
 	{
 		return -3;
 	}
 
-	//¸üÐÂ·ÖÎö²ÎÊýÖÐµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	if(0 != m_pParent->m_pExpData->AutoTransformThresholdValue(1))
 	{
 		return -4;
 	}
 
-	//¸üÐÂÇúÏß¿Ø¼þÖÐµÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿Ø¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	if(0 != RenewDeltaRnCrvThreLineInfo(TRUE))
 	{
 		return -5;
 	}
 
-	//¸üÐÂÒ³ÃæÏÔÊ¾µÄãÐÖµÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ï¢
 	CThreLineInfo* pThreLineInfo = NULL;
 	int iCurSel = m_cbSelChanThre.GetCurSel();
 	if(iCurSel < 0)
@@ -4041,7 +4043,7 @@ int CDataAnaDlg::RefreshTheChannelToShowThre(int iBtIndex,BOOL bChecked)
 		return -3;
 	}
 
-	//iBtIndexÈç¹ûÊÇÑ¡ÖÐ×´Ì¬£¬ÔòÏÔÊ¾¸ÃÍ¨µÀãÐÖµ£¬·ñÔòÏÔÊ¾µÚÒ»¸öÏÔÊ¾µÄÍ¨µÀãÐÖµ
+	//iBtIndexï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½?
 	vector<int> vecChanSelState = pExpData->GetDataAnaChannelBtSelectState();
 	if(iBtIndex >= vecChanSelState.size())
 	{
@@ -4111,14 +4113,14 @@ int CDataAnaDlg::UploadInspectResultToLis()
 		//Ö¡Í·
 		strTemp.Format("%c",0X0B);
 
-		//Ç¶ÈëÊ±¼ä
+		//Ç¶ï¿½ï¿½Ê±ï¿½ï¿½
 		strTemp += "MSH|^~\&|C1||host||"; 
 		strTemp += GetLisCurrentTmTimeA();
 		strTemp += "||ORU^R01|1|P|2.3.1||||NE||";
 
 		strTemp += "\r";
 
-		//Ç¶ÈëCtÖµ
+		//Ç¶ï¿½ï¿½CtÖµ
 		strCt = m_lstAnaResult.GetItemText(vexSelRowId[i],CT_COLUMN_INDEX);
 		if(STR_NOCT != strCt)
 		{
@@ -4224,7 +4226,7 @@ int CDataAnaDlg::SendDataByTcpIp(vector<CStringA>& vecLisInfo)
 			goto END_SOCKET;
 		}
 		
-		//½âÎöÊÕµ½µÄÊý¾Ý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		CStringA strRst = aryBuf;
 		if(-1 == strRst.Find("MSA|AA"))
 		{
@@ -4464,7 +4466,7 @@ int CDataAnaDlg::RefreshLanguageDisplay()
 	CLegendInfo::ResetSegLegendText(&m_segLgdInfo);
 	m_segLgdInfo.SetMyFont(m_stTxFont,iFontH);
 	
-	//ÁÐ±í¿ò
+	//ï¿½Ð±ï¿½ï¿½ï¿½
 	iFontH = 14 * m_dTxRatio;
 	if(bEnglish)
 	{

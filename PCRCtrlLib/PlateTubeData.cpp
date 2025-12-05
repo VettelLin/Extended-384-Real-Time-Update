@@ -43,7 +43,7 @@ BOOL CPlateTubeData::HasData()
 }
 
 
-// Ôö¼ÓÈ«²¿¹ÜµÄµ±Ç°Ñ­»·Êý»òÊ±¼ä
+// ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ÜµÄµï¿½Ç°Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 void CPlateTubeData::AddCycleX(CUIntArray * pArrayCycle)
 {
 	int usefulDataNum = (m_iTubeCount > pArrayCycle->GetSize() ? pArrayCycle->GetSize() : m_iTubeCount);
@@ -53,8 +53,8 @@ void CPlateTubeData::AddCycleX(CUIntArray * pArrayCycle)
 		int nTubeNo = i;
 		if (m_nStartPos == SCAN_START_RT)
 		{
-			//lzh:½«12ÐÞ¸Ä³É6
-			//int nRow = i / 12;	//ÐèÒª¸úÐÐÁÐ¹ØÁª£¬²»ÄÜÊ¹ÓÃ¹Ì¶¨Öµ£¬20220609£¬ËïÎÄÀÉ
+			//lzh:ï¿½ï¿½12ï¿½Þ¸Ä³ï¿½6
+			//int nRow = i / 12;	//ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹Ì¶ï¿½Öµï¿½ï¿½20220609ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			//int nCol = i % 12;
 			//nTubeNo = (nRow+1)*12 - nCol -1;
 			int nRow = i / 6;
@@ -75,7 +75,7 @@ int CPlateTubeData::AddOriginalData(CUIntArray& aryOriData, int iChannelID)
 		int nTubeNo = i;
 		if (m_nStartPos == SCAN_START_RT)
 		{
-			//lzh½«12ÐÞ¸Ä³É6
+			//lzhï¿½ï¿½12ï¿½Þ¸Ä³ï¿½6
 			//int nRow = i / 12;
 			//int nCol = i % 12;
 			//nTubeNo = (nRow+1)*12 - nCol -1;
@@ -157,22 +157,55 @@ UINT CPlateTubeData::GetCurrentCycleX(int iTubeID)
 
 void CPlateTubeData::GetChannelFluY(int iTubeID, eDataType nType, int iChannel, int iCycleCount, double* pdYValue)
 {
-	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(iTubeID-1);
-	ASSERT(pTubeData != NULL);
+	int idx = iTubeID - 1;
+	if(idx < 0 || idx >= m_arrayTubeData.GetCount())
+	{
+		// out of range; zero-fill to avoid asserts in debug builds
+		if(pdYValue != NULL && iCycleCount > 0)
+		{
+			for(int i = 0; i < iCycleCount; ++i) pdYValue[i] = 0.0;
+		}
+		return;
+	}
+	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(idx);
+	if(pTubeData == NULL)
+	{
+		if(pdYValue != NULL && iCycleCount > 0)
+		{
+			for(int i = 0; i < iCycleCount; ++i) pdYValue[i] = 0.0;
+		}
+		return;
+	}
 	pTubeData->GetChannelFluY(nType, iChannel, iCycleCount, pdYValue);
 }
 
 double CPlateTubeData::GetChannelCycleFluY(int iTubeID, eDataType nType, int iChannel, int iCycleId)
 {
-	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(iTubeID - 1);
-	ASSERT(pTubeData != NULL);
+	int idx = iTubeID - 1;
+	if(idx < 0 || idx >= m_arrayTubeData.GetCount())
+	{
+		return 0.0;
+	}
+	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(idx);
+	if(pTubeData == NULL)
+	{
+		return 0.0;
+	}
 	return pTubeData->GetChannelCycleFluY(nType, iChannel, iCycleId);
 }
 
 void CPlateTubeData::SetChannelFluY(int iTubeID, eDataType nType, int iChannel, int iCycleCount, double* pdYValue)
 {
-	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(iTubeID-1);
-	ASSERT(pTubeData != NULL);
+	int idx = iTubeID - 1;
+	if(idx < 0 || idx >= m_arrayTubeData.GetCount())
+	{
+		return;
+	}
+	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(idx);
+	if(pTubeData == NULL)
+	{
+		return;
+	}
 	pTubeData->SetChannelFluY(nType, iChannel, iCycleCount, pdYValue);
 }
 
@@ -184,20 +217,35 @@ void CPlateTubeData::FluChannelCrosstalkAdjust(CTubeInfo* pTubeInfo, float** pCr
 
 int CPlateTubeData::GetDataNum()
 {
+	if(m_arrayTubeData.GetCount() <= 0)
+	{
+		return 0;
+	}
 	CTubeData* pTubeData = (CTubeData*)m_arrayTubeData.GetAt(0);
-	ASSERT(pTubeData != NULL);
+	if(pTubeData == NULL)
+	{
+		return 0;
+	}
 	return pTubeData->GetDataNum();
 }
 
 double CPlateTubeData::GetChannelMaxValueY(eDataType nDataType,int iTubeID,int iChannel)
 {
-	CTubeAmplifyData* pTubeData = (CTubeAmplifyData*)m_arrayTubeData.GetAt(iTubeID - 1);
-	double dReturn = pTubeData->GetMaxValueY(nDataType, iChannel);
-	return dReturn;
+	int idx = iTubeID - 1;
+	if(idx < 0 || idx >= m_arrayTubeData.GetCount())
+	{
+		return 0.0;
+	}
+	CTubeAmplifyData* pTubeData = (CTubeAmplifyData*)m_arrayTubeData.GetAt(idx);
+	if(pTubeData == NULL)
+	{
+		return 0.0;
+	}
+	return pTubeData->GetMaxValueY(nDataType, iChannel);
 }
 
 //*****************************************************************************************************************
-// ¿×°åÀ©Ôö¶ÎÓ«¹âÊý¾Ý
+// ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 BOOL CPlateAmplifyTubeData::AllocateMemory(int iTubeCount, int iChannelCount)
 {
 	DeleteAll();
@@ -241,7 +289,7 @@ void CPlateAmplifyTubeData::FluNormalizeAndDeltaRn(CTubeInfo* pTubeInfo, CDataAn
 	pTubeData->FluNormalizeAndDeltaRn(pTubeInfo, pAnalysisPara, pAlgorithm, pTurbidity);
 }
 
-// Éú³ÉCtµÈÏà¹Ø²ÎÊý
+// ï¿½ï¿½ï¿½ï¿½Ctï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
 double CPlateAmplifyTubeData::GenerateCtByTubeID(eDataType nDataType, int iTubeID, eMethodCalculateCt nMethod, tagAnaAmplifyPara* pAmplifyPara, CDataAnalysisPCR* pAlgorithm)
 {
 	CTubeAmplifyData* pTubeData = (CTubeAmplifyData*)m_arrayTubeData.GetAt(iTubeID - 1);
@@ -314,7 +362,7 @@ int CPlateAmplifyTubeData::SetTubeData(vector<double>* pVecData,int iTubeNum,int
 
 
 //*****************************************************************************************************************
-// ¿×°åÈÛ½â¶ÎÓ«¹âÊý¾Ý
+// ï¿½×°ï¿½ï¿½Û½ï¿½ï¿½Ó«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 BOOL CPlateMeltTubeData::AllocateMemory(int iTubeCount, int iChannelCount)
 {
 	DeleteAll();

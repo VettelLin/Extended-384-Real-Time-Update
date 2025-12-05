@@ -378,8 +378,8 @@ void CSamSetDlg::CreateCtrl()
 
 void CSamSetDlg::CreateBt()
 {
-	m_swtBtPlate.Create(_T("¿×°åÄ£Ê½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_SAMSETDLG_SWTBT_PLATE);
-	m_swtBtChart.Create(_T("±í¸ñÄ£Ê½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_SAMSETDLG_SWTBT_CHART);
+	m_swtBtPlate.Create(_T("ï¿½×°ï¿½Ä£Ê½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_SAMSETDLG_SWTBT_PLATE);
+	m_swtBtChart.Create(_T("ï¿½ï¿½ï¿½ï¿½Ä£Ê½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_SAMSETDLG_SWTBT_CHART);
 }
 
 void CSamSetDlg::CreateLst()
@@ -437,24 +437,24 @@ void CSamSetDlg::InitLst()
 	m_lstSamInfo.m_vertScroll.m_arrowWH = iTempInt1;
 	m_lstSamInfo.m_vertScroll.m_scrollW = iTempInt1;
 
-	m_lstSamInfo.InsertColumn(0, _T("ÐòºÅ"));
-	m_lstSamInfo.InsertColumn(1, _T("·´Ó¦¿×"));
-	m_lstSamInfo.InsertColumn(2, _T("ÑùÆ·ÀàÐÍ"));
-	m_lstSamInfo.InsertColumn(3, _T("Ñù±¾Ãû³Æ"));
-	m_lstSamInfo.InsertColumn(4, _T("Ñù±¾ID"));
-	m_lstSamInfo.InsertColumn(5, _T("±ê×¼Æ·Å¨¶È"));
-	m_lstSamInfo.InsertColumn(6,_T("¹ÜÃû"));
-	m_lstSamInfo.InsertColumn(7, _T("»¼ÕßÐÕÃû"));
-	m_lstSamInfo.InsertColumn(8, _T("ÐÔ±ð"));
-	m_lstSamInfo.InsertColumn(9, _T("ÄêÁä"));
-	m_lstSamInfo.InsertColumn(10, _T("²ÉÑùÈÕÆÚ"));
-	m_lstSamInfo.InsertColumn(11, _T("ËÍ¼ìÒ½Éú"));
-	m_lstSamInfo.InsertColumn(12, _T("ËÍ¼ì¿ÆÊÒ"));
-	m_lstSamInfo.InsertColumn(13, _T("²¡ÀúºÅ"));
-	m_lstSamInfo.InsertColumn(14, _T("²¡´²ºÅ"));
-	m_lstSamInfo.InsertColumn(15, _T("×¡ÔººÅ"));
-	m_lstSamInfo.InsertColumn(16, _T("ÃÅÕïºÅ"));
-	m_lstSamInfo.InsertColumn(17, _T("±¸×¢"));
+	m_lstSamInfo.InsertColumn(0, _T("No."));
+	m_lstSamInfo.InsertColumn(1, _T("Well"));
+	m_lstSamInfo.InsertColumn(2, _T("Product"));
+	m_lstSamInfo.InsertColumn(3, _T("SampleType"));
+	m_lstSamInfo.InsertColumn(4, _T("SampleID"));
+	m_lstSamInfo.InsertColumn(5, _T("StdConc"));
+	m_lstSamInfo.InsertColumn(6,_T("Density"));
+	m_lstSamInfo.InsertColumn(7, _T("Ct"));
+	m_lstSamInfo.InsertColumn(8, _T("Sex"));
+	m_lstSamInfo.InsertColumn(9, _T("Age"));
+	m_lstSamInfo.InsertColumn(10, _T("Department"));
+	m_lstSamInfo.InsertColumn(11, _T("Doctor"));
+	m_lstSamInfo.InsertColumn(12, _T("DoctorTel"));
+	m_lstSamInfo.InsertColumn(13, _T("SampleNo"));
+	m_lstSamInfo.InsertColumn(14, _T("Barcode"));
+	m_lstSamInfo.InsertColumn(15, _T("Ward"));
+	m_lstSamInfo.InsertColumn(16, _T("BedNo"));
+	m_lstSamInfo.InsertColumn(17, _T("Note"));
 
 	m_lstSamInfo.SetBeTellParentRowSelChange(TRUE);
 	m_lstSamInfo.SetColumnMultiDensityState(5,TRUE);
@@ -659,6 +659,7 @@ void CSamSetDlg::ReSetLstSamInfo(vector<CTubeInfo*>& vecSamInfoPtr,BOOL bRedraw 
 		tEnd = iRowNum;
 	}
 
+	int iPtrCount = (int)vecSamInfoPtr.size();
 	for(int k = 0;k < kEnd;++k)
 	{
 		for(int t = 0;t < tEnd;++t)
@@ -674,6 +675,12 @@ void CSamSetDlg::ReSetLstSamInfo(vector<CTubeInfo*>& vecSamInfoPtr,BOOL bRedraw 
 				iTubeIndex = t * iColNum + k;
 				index1 = t;
 				index2 = k + 1;
+			}
+
+			// Guard against out-of-range when plate UI size exceeds data size
+			if(iTubeIndex < 0 || iTubeIndex >= iPtrCount)
+			{
+				continue;
 			}
 
 			if(NULL == vecSamInfoPtr[iTubeIndex])
@@ -733,6 +740,7 @@ void CSamSetDlg::ReSetLstSamInfo(vector<CTubeInfo>& vecSamInfo,BOOL bRedraw /*= 
 		tEnd = iRowNum;
 	}
 
+	int iVecCount = (int)vecSamInfo.size();
 	for(int k = 0;k < kEnd;++k)
 	{
 		for(int t = 0;t < tEnd;++t)
@@ -748,6 +756,12 @@ void CSamSetDlg::ReSetLstSamInfo(vector<CTubeInfo>& vecSamInfo,BOOL bRedraw /*= 
 				iTubeIndex = t * iColNum + k;
 				index1 = t;
 				index2 = k + 1;
+			}
+
+			// Guard against out-of-range when plate UI size exceeds data size
+			if(iTubeIndex < 0 || iTubeIndex >= iVecCount)
+			{
+				continue;
 			}
 
 			if(SAMPLE_TYPE_NONE == vecSamInfo[iTubeIndex].GetSampleType())
@@ -1010,7 +1024,7 @@ int CSamSetDlg::LstSamLanguageChanged()
 
 void CSamSetDlg::SetPlateSelectedSiteSamInfo(EITEMINFOTYPE eItemInfoType,CString strData,int intData /*= 0*/,double dData /*= 0*/)
 {
-	//¹ýÂË¿µÑÐÝá¹«ÓÃÑù±¾ÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½á¹«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	int iRet = CYSamInfoChangedProcess(eItemInfoType,strData,intData,dData);
 	if(0 != iRet)
 	{
@@ -1022,7 +1036,7 @@ void CSamSetDlg::SetPlateSelectedSiteSamInfo(EITEMINFOTYPE eItemInfoType,CString
 
 	BOOL bFindSamTypeNone = FALSE;
 	CTubeInfo tubeInfo;
-	if(ITEMSAMTYPE == eItemInfoType)	//ÅÐ¶ÏÐÞ¸ÄÖ®Ç°µÄÑù±¾ÀàÐÍÊÇ·ñ´æÔÚ¿ÕÀàÐÍ
+	if(ITEMSAMTYPE == eItemInfoType)	//ï¿½Ð¶ï¿½ï¿½Þ¸ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		for(int i = 0;i < m_vecCurSelSite.size();++i)
 		{
@@ -1333,7 +1347,7 @@ int CSamSetDlg::ReSetTubeInfo(vector<int> &vecPlateSelectedSite,vector<CTubeInfo
 	}
 	m_samPlateDlg.Invalidate(FALSE);
 
-	//¸üÐÂÑù±¾ÐÅÏ¢ÁÐ±í¿ò
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½ï¿½ï¿½
 	BOOL bNeedResetLst = FALSE;
 	int iLstRowNum = m_vecPlateSamIndex.size();
 	if(iLstRowNum > 0)
@@ -1407,7 +1421,7 @@ int CSamSetDlg::ReSetTubeInfo(vector<int> &vecPlateSelectedSite,vector<CTubeInfo
 		}
 	}
 
-	//Èç¹û¸Ä±äÐÅÏ¢µÄ¿×Î»ÊÇ·ñÔÚµ±Ç°Ñ¡ÖÐ¿×Î»ÖÐ£¬¸üÐÂÑù±¾ÐÅÏ¢´°¿Ú
+	//ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ï¢ï¿½Ä¿ï¿½Î»ï¿½Ç·ï¿½ï¿½Úµï¿½Ç°Ñ¡ï¿½Ð¿ï¿½Î»ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 	if(bFindSelected)
 	{
 		OnMsgPlateSiteSelectChanged(0,0);
@@ -1418,7 +1432,7 @@ int CSamSetDlg::ReSetTubeInfo(vector<int> &vecPlateSelectedSite,vector<CTubeInfo
 
 int CSamSetDlg::ResetProcSetDlgTubeInfo()
 {
-	//¸üÐÂÑù±¾ÉèÖÃÒ³Ãæ±í¸ñÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	if(m_vecCurSelSite.size() > 0)
 	{
 		vector<CTubeInfo> vecTubeInfo;
@@ -1446,7 +1460,7 @@ void CSamSetDlg::ClearPage(BOOL bRedraw /*= TRUE*/)
 	//m_samPlateDlg.Clear(bRedraw);
 	m_lstSamInfo.Clear(bRedraw);
 	m_samInfoDlg.ClearSamInfo();
-	//´ýÔö¼Ó
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 int CSamSetDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
@@ -1458,7 +1472,7 @@ int CSamSetDlg::FileOpened(CExperimentData* pExpData /*= NULL*/)
 	m_samPlateDlg.SetTubeInfo(vecTubeInfoPtr,TRUE);
 	ReSetLstSamInfo(vecTubeInfoPtr,TRUE);
 
-	//ÉèÖÃ¿µÑÐÝá¹«ÓÃÑù±¾ÐÅÏ¢
+	//ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½á¹«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	m_samInfoDlg.SetCYSamInfo(pExpData);
 
 	return 0;

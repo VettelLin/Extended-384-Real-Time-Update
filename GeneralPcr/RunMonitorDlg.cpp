@@ -210,7 +210,7 @@ LRESULT CRunMonitorDlg::OnMsgPlateSiteSelectChanged(WPARAM wParam,LPARAM lParam)
 {
 	m_samPlateDlg.GetPlateSelectedSite(m_vecPlateSelectedSite);
 	
-	//¿×Î»Ñ¡Ôñ×´Ì¬¸Ä±ä£¬¸üÐÂÏÔÊ¾ÇúÏß
+	//ï¿½ï¿½Î»Ñ¡ï¿½ï¿½×´Ì¬ï¿½Ä±ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
 	UpdateCurveSelectState(FALSE);
 	ResetCurveMaxMinValue(TRUE);
 
@@ -350,16 +350,16 @@ void CRunMonitorDlg::CreateCtrl()
   
 void CRunMonitorDlg::CreateBt()
 {
-	m_swtBtSegMonitor.Create(_T("ÔËÐÐ³ÌÐò"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_RUNSEGMENT);
-	m_swtBtTemMonitor.Create(_T("ÎÂ¶ÈÇúÏß"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_TEMCURVE);
-	m_swtBtAmlOri.Create(_T("À©ÔöÇúÏß"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_ORIGINAML);
-	m_swtBtMeltOri.Create(_T("Ô­Ê¼ÈÛ½âÇúÏß"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_ORIGINMELT);
+	m_swtBtSegMonitor.Create(_T("ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_RUNSEGMENT);
+	m_swtBtTemMonitor.Create(_T("ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_TEMCURVE);
+	m_swtBtAmlOri.Create(_T("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_ORIGINAML);
+	m_swtBtMeltOri.Create(_T("Ô­Ê¼ï¿½Û½ï¿½ï¿½ï¿½ï¿½ï¿½"),WS_CHILD | WS_CLIPSIBLINGS | BS_PUSHBUTTON,CRect(0,0,0,0),this,ID_RUNMONITORDLG_SWTBT_ORIGINMELT);
 }
 
 void CRunMonitorDlg::CreateSt()
 {
-	m_stLidTem.Create(_T("  ¡æ"), WS_CHILD, CRect(0,0,0,0), this,ID_RUNMONITORDLG_ST_LITTEM);
-	m_stTubeTem.Create(_T("  ¡æ"), WS_CHILD, CRect(0,0,0,0), this,ID_RUNMONITORDLG_ST_TUBETEM);
+	m_stLidTem.Create(_T("  ï¿½ï¿½"), WS_CHILD, CRect(0,0,0,0), this,ID_RUNMONITORDLG_ST_LITTEM);
+	m_stTubeTem.Create(_T("  ï¿½ï¿½"), WS_CHILD, CRect(0,0,0,0), this,ID_RUNMONITORDLG_ST_TUBETEM);
 }
 
 void CRunMonitorDlg::CreateSeg()
@@ -387,7 +387,7 @@ void CRunMonitorDlg::InitCrv()
 	m_crvAmlOri.SetVertStringOutStep(1);
 
 	m_crvAmlOri.SetYAxisTag(_T("Fn"));
-	m_crvAmlOri.SetXAxisTag(_T("Ñ­»·Êý"));
+	m_crvAmlOri.SetXAxisTag(_T("Ñ­ï¿½ï¿½ï¿½ï¿½"));
 
 	m_crvAmlOri.SetHoriEndValue(40);
 	m_crvAmlOri.SetHoriStartValue(1);
@@ -415,7 +415,7 @@ void CRunMonitorDlg::InitCrv()
 	m_crvMeltOri.SetVertStringOutStep(1);
 
 	m_crvMeltOri.SetYAxisTag(_T("Fn"));
-	m_crvMeltOri.SetXAxisTag(_T("ÎÂ¶È(¡æ)"));
+	m_crvMeltOri.SetXAxisTag(_T("ï¿½Â¶ï¿½(ï¿½ï¿½)"));
 
 	m_crvMeltOri.SetHoriStartValue(60);
 	m_crvMeltOri.SetHoriEndValue(90);
@@ -442,8 +442,8 @@ void CRunMonitorDlg::InitCrv()
 	m_crvTem.SetVertLineColor(RGB(222,222,222));
 	m_crvTem.SetVertBaseLineColor(RGB(234,236,239));
 
-	m_crvTem.SetYAxisTag(_T("ÎÂ¶È(¡æ)"));
-	m_crvTem.SetXAxisTag(_T("Ê±¼ä(h:mm:ss)"));
+	m_crvTem.SetYAxisTag(_T("ï¿½Â¶ï¿½(ï¿½ï¿½)"));
+	m_crvTem.SetXAxisTag(_T("Ê±ï¿½ï¿½(h:mm:ss)"));
 
 	m_crvTem.SetHoriStartValue(0);
 	m_crvTem.SetHoriEndValue(300000);
@@ -573,7 +573,7 @@ void CRunMonitorDlg::InitSamPlateDlg()
 #ifdef SAMPLATE_16SITE
 	m_samPlateDlg.SetRowColNum(2,8);
 #else
-	//lzh×¢ÊÍ
+	//lzh×¢ï¿½ï¿½
 		//m_samPlateDlg.SetRowColNum(8,12);
 	m_samPlateDlg.SetRowColNum(32, 12);
 #endif
@@ -1036,7 +1036,7 @@ void CRunMonitorDlg::UpdateCurveSelectState(BOOL bRedraw /*= FALSE*/)
 			if(NULL != pDyeTargetInfo && (pDyeTargetInfo->GetBeSelected() || bDeveloper))
 			{
 #ifdef PS96INSTRUMENT
-				//PS96£¬Èç¹ûÑù±¾ÀàÐÍÎª´ý²âÑù±¾£¬Ñù±¾IDÎª¿Õ£¬²»ÏÔÊ¾¶ÔÓ¦ÇúÏß
+				//PS96ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÎªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
 				bValidSamType = !pTubeInfo[i].GetBeNoneSampleType();
 				if(bValidSamType)
 				{
@@ -1161,7 +1161,7 @@ void CRunMonitorDlg::ClearPage(BOOL bRedraw /*= TRUE*/)
 	m_crvTem.DeleteLineData(bRedraw);
 	m_runStateDlg.m_mntBaseInfoDlg.ClearPage();
 
-	//Çå¿Õ¼à¿ØÒ³ÃæÍ¨µÀÑ¡Ôñ°´Å¥µÄÑ¡ÖÐ×´Ì¬
+	//ï¿½ï¿½Õ¼ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬
 	CExperimentData* pExpData = m_pParent->m_pExpData;
 	pExpData->ResetMonitorChannelBtSelectState();
 	return;
@@ -1176,7 +1176,7 @@ void CRunMonitorDlg::ClearExperiment(BOOL bRedraw /*= TRUE*/)
 	m_crvTem.DeleteLineData(bRedraw);
 	m_runStateDlg.m_mntBaseInfoDlg.ClearPage();
 
-	//Çå¿Õ¼à¿ØÒ³ÃæÍ¨µÀÑ¡Ôñ°´Å¥µÄÑ¡ÖÐ×´Ì¬
+	//ï¿½ï¿½Õ¼ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬
 	CExperimentData* pExpData = m_pParent->m_pExpData;
 	pExpData->ResetMonitorChannelBtSelectState();
 	return;
@@ -1195,32 +1195,32 @@ int CRunMonitorDlg::FileOpened(CExperimentData* pExpData /*= NULL*/,BOOL bTempla
 
 	ClearPage(FALSE);
 
-	//´ò¿ªÎÄ¼þºó£¬ÉèÖÃ·ÖÎöÒ³ÃæÍ¨µÀÎªÈ«Ñ¡×´Ì¬
+	//ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Í¨ï¿½ï¿½ÎªÈ«Ñ¡×´Ì¬
 	pExpData->SetMonitorChannelBtAllSelected();
 	m_pParent->m_funcBtDlg.SetChanBtSelectState(pExpData->GetMonitorChannelBtSelectState());
 
 	if(!pExpData->GetBeTemplateFile())
 	{
-		//ÉèÖÃÊµÑé×´Ì¬ÐÅÏ¢£¬Èç¹û´ò¿ªµÄÊÇÄ£°åÎÄ¼þ£¬Ôò²»ÉèÖÃÊµÑé×´Ì¬ÐÅÏ¢
+		//ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¿ªµï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½×´Ì¬ï¿½ï¿½Ï?
 		m_runStateDlg.m_mntBaseInfoDlg.SetMonitorBaseInfo(pExpData->GetExperimentInfo());
 
 		vector<CTubeInfo*> vecPTubeInfo;
 		pExpData->GetAllTubeInfoPtr(vecPTubeInfo);
 		m_samPlateDlg.SetTubeInfo(vecPTubeInfo);
 
-		// ÏÔÊ¾ÎÂ¶ÈÊý¾Ý
+		// ï¿½ï¿½Ê¾ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½
 		SetTemperatureData(pExpData, TRUE);
 
-		//ÉèÖÃÇúÏßÑÕÉ«
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 		SetCrvLineParam(vecPTubeInfo);
 
-		//ÉèÖÃÇúÏßÊý¾Ý
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		SetCurveData(pExpData,TRUE);
 
 		m_segDlg.SetSegmentInfo(pExpData->GetSegment(),TRUE);
 	}
 
-	//ÉèÖÃÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	int iAmpDataLen = pExpData->GetAmplifyDataNum();
 	int iCrvEndValue = pExpData->GetFirstEndCollectCycleNum();
 	if(iAmpDataLen > 1 && iAmpDataLen < iCrvEndValue)
@@ -1233,7 +1233,7 @@ int CRunMonitorDlg::FileOpened(CExperimentData* pExpData /*= NULL*/,BOOL bTempla
 	}
 	SetCurveHoriAxisParam(1,iCrvEndValue,1,FALSE);
 
-	//ÉèÖÃÈÛ½âÇúÏßºá×ø±êÐÅÏ¢
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Û½ï¿½ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	double dStartTem = 60,dEndTem = 90;
 	pExpData->GetFirstMeltCollectStartAndEndTemperature(dStartTem,dEndTem);
 	m_crvMeltOri.SetHoriStartValue(dStartTem);
@@ -1247,14 +1247,17 @@ int CRunMonitorDlg::FileOpened(CExperimentData* pExpData /*= NULL*/,BOOL bTempla
 
 int CRunMonitorDlg::ReAnalysed(CExperimentData* pExpData /*= NULL*/)
 {
-	m_samPlateDlg.SetTubeInfo(pExpData->GetTubeInfoArrayPtr(),TRUE);
+	// Refresh tube info without enforcing CPtrArray size equality
+	vector<CTubeInfo*> vecPTubeInfoForSet;
+	pExpData->GetAllTubeInfoPtr(vecPTubeInfoForSet);
+	m_samPlateDlg.SetTubeInfo(vecPTubeInfoForSet, TRUE);
 
-	//ÉèÖÃÇúÏßÑÕÉ«
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 	vector<CTubeInfo*> vecPTubeInfo;
 	pExpData->GetAllTubeInfoPtr(vecPTubeInfo);
 	SetCrvLineParam(vecPTubeInfo);
 
-	//ÉèÖÃÇúÏßÊý¾Ý
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	SetCurveData(pExpData,TRUE);
 
 	return 0;
@@ -1339,13 +1342,13 @@ int CRunMonitorDlg::SetCurveData(CExperimentData* pExpData,BOOL bRedraw /*= FALS
 	m_crvAmlOri.DeleteLineData(FALSE);
 	m_crvMeltOri.DeleteLineData(FALSE);
 
-	//ÏÔÊ¾À©Ôö¡¢ÈÛÇúÊý¾Ý
+	//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for(int j = 0;j < iTubeNum;++j)
 	{
 		pTubeInfo = pExpData->GetTubeInfoAt(j);
 		if(NULL == pTubeInfo)
 		{
-			//¼ÇÂ¼´íÎóÐÅÏ¢
+			//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 			continue;
 		}
 		if(SAMPLE_TYPE_NONE == pTubeInfo->GetSampleType())
