@@ -215,7 +215,7 @@ void CInstancePCR::InitDeviceStatus()
 	m_sDeviceStatus.cYMot = 0; // Y��״̬��0-������1-����
 	m_sDeviceStatus.cZMot = 0;		// Z��״̬��0-������1-����
 	m_sDeviceStatus.cUMot = 0;		// U��״̬��0-������1-����
-	m_sDeviceStatus.cMotSense = 0;	// ��翪�أ�?-������1-����
+	m_sDeviceStatus.cMotSense = 0;	// ��翪�أ�?-������1-����
 	m_sDeviceStatus.cEeprom = 0;	// EEPROM״̬��0-������1-����
 	m_sDeviceStatus.cPMT = 0;		// PMT״̬��0-������1-����
 
@@ -484,7 +484,7 @@ void CInstancePCR::DeleteFilterPara()
 }
 
 
-// ���ɷ����������ָ���5/6/7�������û�в�����ֻ��һ������?
+// ���ɷ����������ָ���5/6/7�������û�в�����ֻ��һ������?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
@@ -505,7 +505,7 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara)
 	return pCmd;
 }
 
-// ���ɷ����������ָ���5/6/7����������������ֽڲ���?
+// ���ɷ����������ָ���5/6/7����������������ֽڲ���?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, BYTE cPara1, BYTE cPara2)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
@@ -531,10 +531,10 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, UINT nAddress,
 	pCmd[5] = (BYTE)((nAddress & 0xFF00) >> 8);
 	pCmd[6] = (BYTE)(nAddress & 0xFF);
 	pCmd[7] = cGReceiveLen;
-	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//У���?
+	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//У���?
 	return pCmd;
 }
-// �������� 10 �ֽڵ����������ֽ�?+ ���� + �ٶ� + У���?
+// �������� 10 �ֽڵ����������ֽ�?+ ���� + �ٶ� + У���?
 BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, BYTE cFlag, WORD wPulse, WORD wSpeed)
 {
 	BYTE* pCmd = new BYTE[iCmdLength];
@@ -577,7 +577,7 @@ BYTE* CInstancePCR::NewSendCommand(int iCmdLength, BYTE cCommand, WORD wPara1, W
 	pCmd[10] = (BYTE)((wPara4 & 0xFF00) >> 8);
 	pCmd[11] = (BYTE)(wPara4 & 0xFF);
 	pCmd[12] = cMode;
-	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//У���?
+	pCmd[iCmdLength - 1] = m_pComPort->GetByteSum(pCmd, iCmdLength - 1);//У���?
 	return pCmd;
 }
 
@@ -628,7 +628,7 @@ BOOL CInstancePCR::Home()
 	return bReturn;
 }
 
-// �Ƿ����?
+// �Ƿ����?
 BOOL CInstancePCR::IsInBox(eSysBoxStatus& outStatus)
 {
 	outStatus = BOXSTATE_UNKNOW;
@@ -873,7 +873,7 @@ BOOL CInstancePCR::MotorMove(BYTE cMotorFlag, WORD wPulse, WORD wSpeed)
 	return bReturn;
 }
 
-// Ĭ��X�����ɨ��һ��?
+// Ĭ��X�����ɨ��һ��?
 BOOL CInstancePCR::MotorScanRow(WORD wPulse, BYTE cDirection)
 {
 	int iCmdLength = CMD_SEND_LEN11;
@@ -890,7 +890,7 @@ BOOL CInstancePCR::MotorScanRow(WORD wPulse, BYTE cDirection)
 	pCommand[7] = cDirection;
 	pCommand[8] = (BYTE)((wSpeed & 0xFF00) >> 8);
 	pCommand[9] = (BYTE)(wSpeed & 0xFF);
-	pCommand[iCmdLength - 1] = m_pComPort->GetByteSum(pCommand, iCmdLength - 1);//У���?
+	pCommand[iCmdLength - 1] = m_pComPort->GetByteSum(pCommand, iCmdLength - 1);//У���?
 
 	int   iReceiveFrameLen = 0;
 	BYTE* pStatus = NULL;
@@ -984,10 +984,68 @@ BOOL CInstancePCR::SendYMotorAbsoluteMove4Byte(DWORD dwPulse, WORD wSpeed)
 //�Լ���
 BOOL CInstancePCR::ScanOnce()
 {
+	// New scan pattern: [X scan] -> [Y move +1 grid] -> [X reverse scan] -> [Y move +1 grid] ...
+	// After each X scan, Y advances by 1 grid until reaching 31 grids, then send Y home.
+	{
+		BOOL bReturn = TRUE;
+		int iLineDistance = m_sDevicePara.wYMotorScanPulse;
+		int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;
+		WORD wSpeed = m_sDevicePara.wYMotorScanFreq;
+
+		BOOL bForward = TRUE; // X starts forward
+		for (int step = 0; step < 31; ++step)
+		{
+			// 1) X scan (forward or reverse)
+			BOOL bXScanResult = MotorScanRow(iXMotScanDistance, bForward ? 1 : 0);
+			if (!bXScanResult)
+			{
+#ifdef _DEBUG
+				CString strDebug;
+				strDebug.Format(_T("X-axis scan failed at step %d, direction %s"), step + 1, bForward ? _T("forward") : _T("reverse"));
+				OutputDebugString(strDebug);
+#endif
+				bReturn = FALSE;
+				break; // Stop the loop if X scan fails
+			}
+
+			// 2) Move Y to absolute (step+1) grid with 4-byte command
+			{
+				DWORD dwPulseAbs = static_cast<DWORD>(iLineDistance) * static_cast<DWORD>(step + 1);
+				BOOL bYMoveResult = SendYMotorAbsoluteMove4Byte(dwPulseAbs, wSpeed);
+				if (!bYMoveResult)
+				{
+#ifdef _DEBUG
+					CString strDebug;
+					strDebug.Format(_T("Y-axis move failed at step %d, target pulse %lu"), step + 1, dwPulseAbs);
+					OutputDebugString(strDebug);
+#endif
+					bReturn = FALSE;
+					break; // Stop the loop if Y move fails
+				}
+			}
+
+			// Toggle X direction for next scan
+			bForward = !bForward;
+		}
+
+		// Finally, home Y axis
+		if (bReturn)
+		{
+			if (!MotorMove(CInstancePCR::UNIT_MOTOR_Y, 0, CInstancePCR::MOTOR_MOVE_TO))
+			{
+#ifdef _DEBUG
+				OutputDebugString(_T("Y-axis homing failed"));
+#endif
+				bReturn = FALSE;
+			}
+		}
+
+		return bReturn;
+	}
 	BOOL bReturn = FALSE;
 	BYTE cDirection = 1;  // ��ʼ����Ϊ����
 	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y���ƶ��ĵ�λ����
-	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X��ɨ�����?
+	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X��ɨ�����?
 
 
 
@@ -1006,7 +1064,7 @@ BOOL CInstancePCR::ScanOnce()
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y��ڶ����ƶ�?��ʧ��"));
+		OutputDebugString(_T("Y��ڶ����ƶ�?��ʧ��"));
 #endif
 		return FALSE;
 	}
@@ -1040,7 +1098,7 @@ BOOL CInstancePCR::ScanOnce()
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y��������ƶ�?��ʧ��"));
+		OutputDebugString(_T("Y��������ƶ�?��ʧ��"));
 #endif
 		return FALSE;
 	}
@@ -1104,10 +1162,39 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 	clock_t ckStart = clock();
 #endif
 
+	// New scan pattern with optional stop flag
+	{
+		BOOL bReturn = TRUE;
+		int iLineDistance = m_sDevicePara.wYMotorScanPulse;
+		int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;
+		WORD wSpeed = m_sDevicePara.wYMotorScanFreq;
+
+		BOOL bForward = TRUE;
+		for (int step = 0; step < 31; ++step)
+		{
+			if (NULL != pBeAskTop && *pBeAskTop) break;
+			if (!MotorScanRow(iXMotScanDistance, bForward ? 1 : 0)) { bReturn = FALSE; break; }
+
+			if (NULL != pBeAskTop && *pBeAskTop) break;
+			// Move Y to absolute (step+1) grid with 4-byte command
+			{
+				DWORD dwPulseAbs = static_cast<DWORD>(iLineDistance) * static_cast<DWORD>(step + 1);
+				if (!SendYMotorAbsoluteMove4Byte(dwPulseAbs, wSpeed)) { bReturn = FALSE; break; }
+			}
+
+			if (NULL != pBeAskTop && *pBeAskTop) break;
+			// Next scan toggles direction
+			bForward = !bForward;
+		}
+
+		// Home Y only per requirement
+		MotorMove(CInstancePCR::UNIT_MOTOR_Y, 0, CInstancePCR::MOTOR_MOVE_TO);
+		return bReturn;
+	}
 	BOOL bReturn = FALSE;
 	BYTE cDirection = 1;  // ��ʼ����Ϊ����
 	int iLineDistance = m_sDevicePara.wYMotorScanPulse;  // Y���ƶ��ĵ�λ����
-	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X��ɨ�����?
+	int iXMotScanDistance = m_sDevicePara.wXMotorScanPulse;  // X��ɨ�����?
 
 	// ��һ��X���ƶ�����������ɨ��
 	bReturn = MotorScanRow(iXMotScanDistance, cDirection);
@@ -1117,7 +1204,7 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 	// �ж��û��Ƿ�����ֹͣɨ��
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// ֱ����ֹɨ�裬��λ���?
+		// ֱ����ֹɨ�裬��λ���?
 		goto RETURN_HOME;
 	}
 
@@ -1140,7 +1227,7 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 	// �ж��û��Ƿ�����ֹͣɨ��
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// ֱ����ֹɨ�裬��λ���?
+		// ֱ����ֹɨ�裬��λ���?
 		goto RETURN_HOME;
 	}
 
@@ -1152,7 +1239,7 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 	if (!bReturn)
 	{
 #ifdef _DEBUG
-		OutputDebugString(_T("Y��������ƶ�?��ʧ��"));
+		OutputDebugString(_T("Y��������ƶ�?��ʧ��"));
 #endif
 		return FALSE;
 	}
@@ -1172,7 +1259,7 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 
 
 
-	// ���ĴΣ�X���ɨһ�λع�?
+	// ���ĴΣ�X���ɨһ�λع�?
 
 	// ȷ��X�ᷴ��ɨ��
 	cDirection = 0;  // ����Ϊ����
@@ -1189,7 +1276,7 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 	// �ж��û��Ƿ�����ֹͣɨ��
 	if (NULL != pBeAskTop && *pBeAskTop)
 	{
-		// ֱ����ֹɨ�裬��λ���?
+		// ֱ����ֹɨ�裬��λ���?
 		goto RETURN_HOME;
 
 	}
@@ -1197,11 +1284,11 @@ BOOL CInstancePCR::ScanOnce(BOOL* pBeAskTop)
 
 	if (bReturn)
 	{
-		for (int i = 0; i < 43000; i += 100)  // ÿ100ms���һ��?
+		for (int i = 0; i < 43000; i += 100)  // ÿ100ms���һ��?
 		{
 			if (NULL != pBeAskTop && *pBeAskTop)
 			{
-				// ֱ����ֹ���ȵȴ�����λ���?
+				// ֱ����ֹ���ȵȴ�����λ���?
 				goto RETURN_HOME;
 			}
 			Sleep(100);  // ÿ������100����
@@ -1368,7 +1455,7 @@ WORD CInstancePCR::GetPMTGain()
 	return wPMTGain;
 }
 
-// ȡ��ϵͳ�����Ԥ���¶Ȳ���?
+// ȡ��ϵͳ�����Ԥ���¶Ȳ���?
 float CInstancePCR::GetSysTemp(eSysTempType nType)
 {
 	float fTemp = 0.0f;
@@ -1552,7 +1639,7 @@ int CInstancePCR::GetCalibrateChannel()
 	return iChannel;
 }
 
-// ֻ����ɨ���·ͨ���������ش��ڵ�ͨ���������м䲻��ͨ��Ҳ�Ǵ���?
+// ֻ����ɨ���·ͨ���������ش��ڵ�ͨ���������м䲻��ͨ��Ҳ�Ǵ���?
 int CInstancePCR::GetScanChannelCount()
 {
 	int iMaxChannel = -1;
@@ -1658,7 +1745,7 @@ BOOL CInstancePCR::SetPWMTemp(float fTemp1, float fTemp2, float fTemp3, WORD Pwm
 	pCmd[14] = (BYTE)(Pwm3 >> 8);
 	pCmd[15] = (BYTE)(Pwm3 & 0xFF);
 
-	//У���?
+	//У���?
 	for (int i = 0; i < 16; ++i)
 	{
 		pCmd[16] += pCmd[i];
@@ -1907,7 +1994,7 @@ BOOL CInstancePCR::ReadAllFLUData(CUIntArray* pAryData, int iChanNum)
 	return bReturn;
 }
 
-// ��ȡ�豸״̬����ʵ�������ʹ��?
+// ��ȡ�豸״̬����ʵ�������ʹ��?
 BOOL CInstancePCR::ReadDeviceStatus()
 {
 	BYTE* pCommand = NewSendCommand(CMD_SEND_LEN5, PCR_DEVICE_STATUS, 0);
@@ -2133,7 +2220,7 @@ void CInstancePCR::SetHardwareStatus(BYTE* state)
 	m_sHardwareStatus.wPET3PWMOut = WORD(m_sHardwareStatus.wPET3PWMOut << 8) + state[77];  ///<
 }
 
-// ���Ӳ��״̬��Ϣ��������־��?
+// ���Ӳ��״̬��Ϣ��������־��?
 void CInstancePCR::OutputHardwareStatusToErrorLog()
 {
 	CString str;
@@ -2743,7 +2830,7 @@ int CInstancePCR::HeatModeduleCheck()
 
 	m_heatModuleChkParam.ResetCheckResult();
 
-	//�����������¼��?
+	//�����������¼��?
 	for (int i = 0; i < 3; ++i)
 	{
 		pPeltierChkParam = m_heatModuleChkParam.GetPeltierCheckParam(0);
@@ -2925,7 +3012,7 @@ int CInstancePCR::HeatModeduleCheck()
 		}
 	}
 
-	//�Լ����ʱ����ȡ��ǰ�¶��ж��費��Ҫ����?
+	//�Լ����ʱ����ȡ��ǰ�¶��ж��費��Ҫ����?
 	if (!ReadPCRTemp(fTem, bTarget))
 	{
 		iErrId = -6;
@@ -3144,7 +3231,7 @@ BOOL CInstancePCR::WriteEPROM(UINT nAddress, int iData, int iDataLen)
 	{
 		pCommand[7 + i] = BYTE((iData >> (i * 8)) & 0XFF);
 	}
-	pCommand[iCmdLen - 1] = m_pComPort->GetByteSum(pCommand, iCmdLen - 1);//У���?
+	pCommand[iCmdLen - 1] = m_pComPort->GetByteSum(pCommand, iCmdLen - 1);//У���?
 
 	int iReceiveFrameLen = 0;
 	BYTE* pStatus = NULL;

@@ -289,7 +289,7 @@ void CPlateAmplifyTubeData::FluNormalizeAndDeltaRn(CTubeInfo* pTubeInfo, CDataAn
 	pTubeData->FluNormalizeAndDeltaRn(pTubeInfo, pAnalysisPara, pAlgorithm, pTurbidity);
 }
 
-// ����Ct����ز���
+
 double CPlateAmplifyTubeData::GenerateCtByTubeID(eDataType nDataType, int iTubeID, eMethodCalculateCt nMethod, tagAnaAmplifyPara* pAmplifyPara, CDataAnalysisPCR* pAlgorithm)
 {
 	CTubeAmplifyData* pTubeData = (CTubeAmplifyData*)m_arrayTubeData.GetAt(iTubeID - 1);
@@ -361,8 +361,6 @@ int CPlateAmplifyTubeData::SetTubeData(vector<double>* pVecData,int iTubeNum,int
 }
 
 
-//*****************************************************************************************************************
-// �װ��۽��ӫ������
 BOOL CPlateMeltTubeData::AllocateMemory(int iTubeCount, int iChannelCount)
 {
 	DeleteAll();
