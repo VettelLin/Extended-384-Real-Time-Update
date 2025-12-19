@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8D510EBB-9F2E-4BAA-A399-A5EAE904CF3E}</ProjectGuid>
+    <RootNamespace>PCRCtrlLib</RootNamespace>
+    <Keyword>MFCDLLProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\Language;..\CurveFit;..\PCRAlgorithmLib;..\GeneralPcr;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\Language;..\CurveFit;..\GeneralPcr;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include;</IncludePath>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\PCRInstanceLib;..\PCRAlgorithmLib;..\Libxl\include_cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>.\PCRCtrlLib.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>"$(OutDir)"</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Language.lib;CurveFit.lib;PCRInstanceLib.lib;PCRAlgorithmLib.lib;libxl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_AFXEXT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\PCRInstanceLib;..\PCRAlgorithmLib;..\Libxl\include_cpp</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>.\PCRCtrlLib.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>"$(OutDir)"</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Language.lib;CurveFit.lib;PCRInstanceLib.lib;PCRAlgorithmLib.lib;libxl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="PCRCtrlLib.def" />
+    <None Include="ReadMe.txt" />
+    <None Include="res\PCRCtrlLib.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AxisInfo.cpp" />
+    <ClCompile Include="DataAnalysisPara.cpp" />
+    <ClCompile Include="CalibrateParaTurbidity.cpp" />
+    <ClCompile Include="DyeTargetInfo.cpp" />
+    <ClCompile Include="ExpDeviceStatusThread.cpp" />
+    <ClCompile Include="ExpRunPara.cpp" />
+    <ClCompile Include="ExpStateInfo.cpp" />
+    <ClCompile Include="HardwareInfo.cpp" />
+    <ClCompile Include="LinkList.cpp" />
+    <ClCompile Include="PlateTubeData.cpp" />
+    <ClCompile Include="ConfigureDB.cpp" />
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ExperimentData.cpp" />
+    <ClCompile Include="ExperimentInfo.cpp" />
+    <ClCompile Include="ExpTempDataThread.cpp" />
+    <ClCompile Include="PCRCtrlLib.cpp" />
+    <ClCompile Include="PlateTubeInfo.cpp" />
+    <ClCompile Include="PublicInfo.cpp" />
+    <ClCompile Include="ReagentItem.cpp" />
+    <ClCompile Include="ReagentItemManager.cpp" />
+    <ClCompile Include="ReportTemplateData.cpp" />
+    <ClCompile Include="SamIdSiteRelation.cpp" />
+    <ClCompile Include="SampleInfo.cpp" />
+    <ClCompile Include="SegItemInfo.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="StepItemInfo.cpp" />
+    <ClCompile Include="TemperatureData.cpp" />
+    <ClCompile Include="TubeData.cpp" />
+    <ClCompile Include="TubeInfo.cpp" />
+    <ClCompile Include="VolumeDelayParam.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AxisInfo.h" />
+    <ClInclude Include="DataAnalysisPara.h" />
+    <ClInclude Include="CalibrateParaTurbidity.h" />
+    <ClInclude Include="DyeTargetInfo.h" />
+    <ClInclude Include="ExpDeviceStatusThread.h" />
+    <ClInclude Include="ExpRunPara.h" />
+    <ClInclude Include="ExpStateInfo.h" />
+    <ClInclude Include="HardwareInfo.h" />
+    <ClInclude Include="LinkList.h" />
+    <ClInclude Include="MyDelete.h" />
+    <ClInclude Include="PlateTubeData.h" />
+    <ClInclude Include="ConfigureDB.h" />
+    <ClInclude Include="ConfigureDBInfo.h" />
+    <ClInclude Include="ExperimentData.h" />
+    <ClInclude Include="ExperimentInfo.h" />
+    <ClInclude Include="ExpTempDataThread.h" />
+    <ClInclude Include="PlateTubeInfo.h" />
+    <ClInclude Include="PublicInfo.h" />
+    <ClInclude Include="ReagentItem.h" />
+    <ClInclude Include="ReagentItemManager.h" />
+    <ClInclude Include="ReportTemplateData.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="SamIdSiteRelation.h" />
+    <ClInclude Include="SampleInfo.h" />
+    <ClInclude Include="SegItemInfo.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StepItemInfo.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="TemperatureData.h" />
+    <ClInclude Include="TubeData.h" />
+    <ClInclude Include="TubeInfo.h" />
+    <ClInclude Include="VolumeDelayParam.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PCRCtrlLib.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
